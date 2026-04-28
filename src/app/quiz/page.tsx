@@ -2,12 +2,11 @@
 
 import { useState } from "react";
 import styles from "./quiz.module.css";
-import { CheckCircle, XCircle, RotateCcw, ArrowRight, Trophy, BookOpen, ChevronLeft } from "lucide-react";
+import { CheckCircle, XCircle, RotateCcw, ArrowRight, BookOpen, ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import quizzesData from "@/data/quizzes.json";
 
 type QuizTopic = typeof quizzesData[number];
-type Question = QuizTopic["questions"][number];
 
 function getGrade(score: number, total: number) {
   const pct = (score / total) * 100;
@@ -106,7 +105,14 @@ export default function QuizPage() {
         {isHighScore && (
           <div className={styles.confettiContainer}>
             {[...Array(20)].map((_, i) => (
-              <div key={i} className={styles.confettiPiece} style={{ left: `${Math.random() * 100}%`, animationDelay: `${Math.random() * 2}s` }} />
+              <div 
+                key={i} 
+                className={styles.confettiPiece} 
+                style={{ 
+                  left: `${(i * 5.23) % 100}%`, 
+                  animationDelay: `${(i * 0.17) % 2}s` 
+                }} 
+              />
             ))}
           </div>
         )}

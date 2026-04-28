@@ -10,13 +10,14 @@ export default function Footer() {
           <Link href="/" className={styles.logo}>
             Elect<span>Ed</span>
           </Link>
+          <div className={styles.authoritativeBadge}>AUTHORITATIVE ELECTION DATA</div>
           <p className={styles.description}>
-            Empowering citizens to innovate, protect, and participate in the world's largest democracy.
+            Empowering citizens to innovate, protect, and participate in the world&apos;s largest democracy.
           </p>
           <div className={styles.securitySealGroup}>
-            <div className={styles.sealCircle} title="GLOBAL NETWORK"><Globe size={18} /></div>
-            <div className={styles.sealCircle} title="SECURE CONTACT"><Mail size={18} /></div>
-            <div className={styles.sealCircle} title="ENCRYPTED DATA"><Lock size={18} /></div>
+            <div className={styles.sealCircle} title="GLOBAL NETWORK"><Globe size={18} aria-hidden="true" /></div>
+            <div className={styles.sealCircle} title="SECURE CONTACT"><Mail size={18} aria-hidden="true" /></div>
+            <div className={styles.sealCircle} title="ENCRYPTED DATA"><Lock size={18} aria-hidden="true" /></div>
           </div>
         </div>
         
@@ -32,6 +33,7 @@ export default function Footer() {
             <h3>CONTROL PANEL</h3>
             <Link href="/regions">Regional Portals</Link>
             <Link href="/reminders">Incident Reminders</Link>
+            <Link href="/sources">Data Sources</Link>
             <a href="https://eci.gov.in/" target="_blank" rel="noopener noreferrer">ECI Official</a>
           </div>
         </div>

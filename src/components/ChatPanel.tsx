@@ -74,7 +74,7 @@ export default function ChatPanel({ isOpen, onClose }: ChatPanelProps) {
           setMessages(prev => {
             const newMessages = [...prev];
             const last = newMessages[newMessages.length - 1];
-            if (last.role === "assistant") {
+            if (last?.role === "assistant") {
               last.content = assistantMessage;
             } else {
               newMessages.push({ role: "assistant", content: assistantMessage });
@@ -109,7 +109,7 @@ export default function ChatPanel({ isOpen, onClose }: ChatPanelProps) {
               <span className={styles.status}>Online • Powered by Gemini</span>
             </div>
           </div>
-          <button className={styles.closeBtn} onClick={onClose}>
+          <button className={styles.closeBtn} onClick={onClose} aria-label="Close Election Assistant">
             <X size={20} />
           </button>
         </header>
@@ -146,7 +146,7 @@ export default function ChatPanel({ isOpen, onClose }: ChatPanelProps) {
             placeholder="Ask about registration, EVMs, etc..."
             disabled={isLoading}
           />
-          <button type="submit" disabled={!input.trim() || isLoading} className={styles.sendBtn}>
+          <button type="submit" disabled={!input.trim() || isLoading} className={styles.sendBtn} aria-label="Send message">
             {isLoading ? <Loader2 size={18} className={styles.spinner} /> : <Send size={18} />}
           </button>
         </form>

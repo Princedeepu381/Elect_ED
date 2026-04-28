@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
-import { ShieldAlert, Fingerprint, Lock, CheckCircle2, Volume2, Info } from 'lucide-react';
+import Image from 'next/image';
+import { ShieldAlert, Fingerprint, Lock, Volume2, Info } from 'lucide-react';
 import styles from './evm.module.css';
 
 interface EVMCandidate {
@@ -14,16 +15,16 @@ interface EVMCandidate {
 }
 
 const candidatesData: EVMCandidate[] = [
-  { id: '1', name: 'Narendra Modi', party: 'Bharatiya Janata Party (BJP)', symbol: <img src="https://upload.wikimedia.org/wikipedia/en/thumb/1/1e/Bharatiya_Janata_Party_logo.svg/1200px-Bharatiya_Janata_Party_logo.svg.png" alt="Lotus" style={{width: '80%', height: '80%', objectFit: 'contain', display: 'inline-block', filter: 'brightness(0) invert(1)'}} />, image: '/candidates/modi.jpg' },
-  { id: '2', name: 'Rahul Gandhi', party: 'Indian National Congress (INC)', symbol: <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Indian_National_Congress_hand_logo.svg/1200px-Indian_National_Congress_hand_logo.svg.png" alt="Hand" style={{width: '80%', height: '80%', objectFit: 'contain', display: 'inline-block', filter: 'brightness(0) invert(1)'}} />, image: '/candidates/rahul.jpg' },
-  { id: '3', name: 'Mamata Banerjee', party: 'All India Trinamool Congress', symbol: <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/All_India_Trinamool_Congress_logo.svg/1200px-All_India_Trinamool_Congress_logo.svg.png" alt="Flowers" style={{width: '80%', height: '80%', objectFit: 'contain', display: 'inline-block', filter: 'brightness(0) invert(1)'}} />, image: '/candidates/mamata.jpg' },
-  { id: '4', name: 'Arvind Kejriwal', party: 'Aam Aadmi Party (AAP)', symbol: <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Aam_Aadmi_Party_Logo.svg/1200px-Aam_Aadmi_Party_Logo.svg.png" alt="Broom" style={{width: '80%', height: '80%', objectFit: 'contain', display: 'inline-block', filter: 'brightness(0) invert(1)'}} />, image: '/candidates/kejriwal.jpg' },
-  { id: '5', name: 'Akhilesh Yadav', party: 'Samajwadi Party (SP)', symbol: <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Samajwadi_Party_logo.svg/1200px-Samajwadi_Party_logo.svg.png" alt="Bicycle" style={{width: '80%', height: '80%', objectFit: 'contain', display: 'inline-block', filter: 'brightness(0) invert(1)'}} />, image: '/candidates/akhilesh.jpg' },
-  { id: '6', name: 'Mayawati', party: 'Bahujan Samaj Party (BSP)', symbol: <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Bahujan_Samaj_Party_symbol.svg/1200px-Bahujan_Samaj_Party_symbol.svg.png" alt="Elephant" style={{width: '80%', height: '80%', objectFit: 'contain', display: 'inline-block', filter: 'brightness(0) invert(1)'}} />, image: '/candidates/mayawati.jpg' },
-  { id: '7', name: 'M. K. Stalin', party: 'Dravida Munnetra Kazhagam', symbol: <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Dravida_Munnetra_Kazhagam_Rising_Sun.svg/1200px-Dravida_Munnetra_Kazhagam_Rising_Sun.svg.png" alt="Rising Sun" style={{width: '80%', height: '80%', objectFit: 'contain', display: 'inline-block', filter: 'brightness(0) invert(1)'}} />, image: '/candidates/stalin.jpg' },
-  { id: '8', name: 'Nikhil Kumaraswamy', party: 'Janata Dal (Secular)', symbol: <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Janata_Dal_%28Secular%29_logo.svg/1200px-Janata_Dal_%28Secular%29_logo.svg.png" alt="Farmer" style={{width: '80%', height: '80%', objectFit: 'contain', display: 'inline-block', filter: 'brightness(0) invert(1)'}} />, image: '/candidates/nikhil.jpg' },
-  { id: '9', name: 'Uddhav Thackeray', party: 'Shiv Sena (UBT)', symbol: <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Shiv_Sena_Logo.svg/1200px-Shiv_Sena_Logo.svg.png" alt="Torch" style={{width: '80%', height: '80%', objectFit: 'contain', display: 'inline-block', filter: 'brightness(0) invert(1)'}} />, image: '/candidates/uddhav.jpg' },
-  { id: '10', name: 'NOTA', party: 'None of the Above', symbol: <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/None_of_the_above_symbol.svg/1200px-None_of_the_above_symbol.svg.png" alt="NOTA" style={{width: '80%', height: '80%', objectFit: 'contain', display: 'inline-block', filter: 'brightness(0) invert(1)'}} />, isNota: true },
+  { id: '1', name: 'Narendra Modi', party: 'Bharatiya Janata Party (BJP)', symbol: <Image src="https://upload.wikimedia.org/wikipedia/en/thumb/1/1e/Bharatiya_Janata_Party_logo.svg/1200px-Bharatiya_Janata_Party_logo.svg.png" alt="Lotus" width={100} height={100} style={{width: '80%', height: '80%', objectFit: 'contain', display: 'inline-block', filter: 'brightness(0) invert(1)'}} />, image: '/candidates/modi.jpg' },
+  { id: '2', name: 'Rahul Gandhi', party: 'Indian National Congress (INC)', symbol: <Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Indian_National_Congress_hand_logo.svg/1200px-Indian_National_Congress_hand_logo.svg.png" alt="Hand" width={100} height={100} style={{width: '80%', height: '80%', objectFit: 'contain', display: 'inline-block', filter: 'brightness(0) invert(1)'}} />, image: '/candidates/rahul.jpg' },
+  { id: '3', name: 'Mamata Banerjee', party: 'All India Trinamool Congress', symbol: <Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/All_India_Trinamool_Congress_logo.svg/1200px-All_India_Trinamool_Congress_logo.svg.png" alt="Flowers" width={100} height={100} style={{width: '80%', height: '80%', objectFit: 'contain', display: 'inline-block', filter: 'brightness(0) invert(1)'}} />, image: '/candidates/mamata.jpg' },
+  { id: '4', name: 'Arvind Kejriwal', party: 'Aam Aadmi Party (AAP)', symbol: <Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Aam_Aadmi_Party_Logo.svg/1200px-Aam_Aadmi_Party_Logo.svg.png" alt="Broom" width={100} height={100} style={{width: '80%', height: '80%', objectFit: 'contain', display: 'inline-block', filter: 'brightness(0) invert(1)'}} />, image: '/candidates/kejriwal.jpg' },
+  { id: '5', name: 'Akhilesh Yadav', party: 'Samajwadi Party (SP)', symbol: <Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Samajwadi_Party_logo.svg/1200px-Samajwadi_Party_logo.svg.png" alt="Bicycle" width={100} height={100} style={{width: '80%', height: '80%', objectFit: 'contain', display: 'inline-block', filter: 'brightness(0) invert(1)'}} />, image: '/candidates/akhilesh.jpg' },
+  { id: '6', name: 'Mayawati', party: 'Bahujan Samaj Party (BSP)', symbol: <Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Bahujan_Samaj_Party_symbol.svg/1200px-Bahujan_Samaj_Party_symbol.svg.png" alt="Elephant" width={100} height={100} style={{width: '80%', height: '80%', objectFit: 'contain', display: 'inline-block', filter: 'brightness(0) invert(1)'}} />, image: '/candidates/mayawati.jpg' },
+  { id: '7', name: 'M. K. Stalin', party: 'Dravida Munnetra Kazhagam', symbol: <Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Dravida_Munnetra_Kazhagam_Rising_Sun.svg/1200px-Dravida_Munnetra_Kazhagam_Rising_Sun.svg.png" alt="Rising Sun" width={100} height={100} style={{width: '80%', height: '80%', objectFit: 'contain', display: 'inline-block', filter: 'brightness(0) invert(1)'}} />, image: '/candidates/stalin.jpg' },
+  { id: '8', name: 'Nikhil Kumaraswamy', party: 'Janata Dal (Secular)', symbol: <Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Janata_Dal_%28Secular%29_logo.svg/1200px-Janata_Dal_%28Secular%29_logo.svg.png" alt="Farmer" width={100} height={100} style={{width: '80%', height: '80%', objectFit: 'contain', display: 'inline-block', filter: 'brightness(0) invert(1)'}} />, image: '/candidates/nikhil.jpg' },
+  { id: '9', name: 'Uddhav Thackeray', party: 'Shiv Sena (UBT)', symbol: <Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Shiv_Sena_Logo.svg/1200px-Shiv_Sena_Logo.svg.png" alt="Torch" width={100} height={100} style={{width: '80%', height: '80%', objectFit: 'contain', display: 'inline-block', filter: 'brightness(0) invert(1)'}} />, image: '/candidates/uddhav.jpg' },
+  { id: '10', name: 'NOTA', party: 'None of the Above', symbol: <Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/None_of_the_above_symbol.svg/1200px-None_of_the_above_symbol.svg.png" alt="NOTA" width={100} height={100} style={{width: '80%', height: '80%', objectFit: 'contain', display: 'inline-block', filter: 'brightness(0) invert(1)'}} />, isNota: true },
 ];
 
 export default function EVMPage() {
@@ -35,8 +36,12 @@ export default function EVMPage() {
 
   const playEVMBeep = () => {
     try {
-      const AudioContext = window.AudioContext || (window as any).webkitAudioContext;
-      const ctx = new AudioContext();
+      const AudioContextClass = (window.AudioContext || 
+        (window as unknown as Window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext);
+      
+      if (!AudioContextClass) return;
+      
+      const ctx = new AudioContextClass();
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
       
@@ -118,7 +123,7 @@ export default function EVMPage() {
               <div key={c.id} className={styles.candidateRow}>
                 <div className={styles.candidatePhoto}>
                   {c.image && !c.isNota ? (
-                    <img src={c.image} alt={c.name} />
+                    <Image src={c.image} alt={c.name} width={60} height={60} style={{ objectFit: 'cover' }} />
                   ) : (
                     <div className={styles.noPhoto} aria-hidden="true" />
                   )}

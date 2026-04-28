@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { CheckCircle, XCircle, AlertCircle, ExternalLink, BarChart3 } from 'lucide-react';
 import styles from './candidates.module.css';
 
@@ -25,51 +25,45 @@ interface Candidate {
 }
 
 export default function CandidatesPage() {
-  const [candidates, setCandidates] = useState<Candidate[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    // High-speed static data model for candidate intel
-    setCandidates([
-      {
-        id: '1', name: 'Narendra Modi', party: 'Bharatiya Janata Party (BJP)', education: 'M.A.', assetsStr: '₹ 3.02 Crores', liabilitiesStr: '₹ 0', assetsRaw: 30200000, liabilitiesRaw: 0, cases: 0, affidavitUrl: 'https://affidavit.eci.gov.in/',
-        promises: [{ id: 'p1', text: 'Ram Mandir Construction', delivered: true }, { id: 'p2', text: 'Article 370 Abrogation', delivered: true }]
-      },
-      {
-        id: '2', name: 'Rahul Gandhi', party: 'Indian National Congress (INC)', education: 'M.Phil', assetsStr: '₹ 20.4 Crores', liabilitiesStr: '₹ 49.7 Lakhs', assetsRaw: 204000000, liabilitiesRaw: 4970000, cases: 18, affidavitUrl: 'https://affidavit.eci.gov.in/',
-        promises: [{ id: 'p4', text: 'NYAY Scheme', delivered: false }, { id: 'p5', text: 'Caste Census', delivered: false }]
-      },
-      {
-        id: '3', name: 'Mamata Banerjee', party: 'All India Trinamool Congress', education: 'M.A., L.L.B', assetsStr: '₹ 16.7 Lakhs', liabilitiesStr: '₹ 0', assetsRaw: 1670000, liabilitiesRaw: 0, cases: 0, affidavitUrl: 'https://affidavit.eci.gov.in/',
-        promises: [{ id: 'p6', text: 'Kanyashree Prakalpa', delivered: true }]
-      },
-      {
-        id: '4', name: 'Arvind Kejriwal', party: 'Aam Aadmi Party (AAP)', education: 'B.Tech', assetsStr: '₹ 3.4 Crores', liabilitiesStr: '₹ 0', assetsRaw: 34000000, liabilitiesRaw: 0, cases: 47, affidavitUrl: 'https://affidavit.eci.gov.in/',
-        promises: [{ id: 'p7', text: 'Free Electricity (200 units)', delivered: true }, { id: 'p8', text: 'Mohalla Clinics', delivered: true }]
-      },
-      {
-        id: '5', name: 'Akhilesh Yadav', party: 'Samajwadi Party (SP)', education: 'M.Tech', assetsStr: '₹ 42.1 Crores', liabilitiesStr: '₹ 2.8 Crores', assetsRaw: 421000000, liabilitiesRaw: 28000000, cases: 2, affidavitUrl: 'https://affidavit.eci.gov.in/',
-        promises: [{ id: 'p9', text: 'Agra-Lucknow Expressway', delivered: true }]
-      },
-      {
-        id: '6', name: 'Mayawati', party: 'Bahujan Samaj Party (BSP)', education: 'B.A., L.L.B', assetsStr: '₹ 111.6 Crores', liabilitiesStr: '₹ 0', assetsRaw: 1116000000, liabilitiesRaw: 0, cases: 0, affidavitUrl: 'https://affidavit.eci.gov.in/',
-        promises: [{ id: 'p10', text: 'Dalit Empowerment', delivered: true }]
-      },
-      {
-        id: '7', name: 'M. K. Stalin', party: 'Dravida Munnetra Kazhagam', education: 'B.A.', assetsStr: '₹ 8.8 Crores', liabilitiesStr: '₹ 0', assetsRaw: 88000000, liabilitiesRaw: 0, cases: 4, affidavitUrl: 'https://affidavit.eci.gov.in/',
-        promises: [{ id: 'p11', text: 'Free Bus Travel for Women', delivered: true }]
-      },
-      {
-        id: '8', name: 'Nikhil Kumaraswamy', party: 'Janata Dal (Secular)', education: 'B.A.', assetsStr: '₹ 105.2 Crores', liabilitiesStr: '₹ 45.3 Crores', assetsRaw: 1052000000, liabilitiesRaw: 453000000, cases: 1, affidavitUrl: 'https://affidavit.eci.gov.in/',
-        promises: [{ id: 'p12', text: 'Farmers Loan Waiver Support', delivered: false }]
-      },
-      {
-        id: '9', name: 'Uddhav Thackeray', party: 'Shiv Sena (UBT)', education: 'B.A.', assetsStr: '₹ 143.2 Crores', liabilitiesStr: '₹ 15.5 Crores', assetsRaw: 1432000000, liabilitiesRaw: 155000000, cases: 23, affidavitUrl: 'https://affidavit.eci.gov.in/',
-        promises: [{ id: 'p13', text: 'Farm Loan Waiver (Mahatma Jyotirao Phule)', delivered: true }]
-      }
-    ]);
-    setLoading(false);
-  }, []);
+  const [candidates] = useState<Candidate[]>([
+    {
+      id: '1', name: 'Narendra Modi', party: 'Bharatiya Janata Party (BJP)', education: 'M.A.', assetsStr: '₹ 3.02 Crores', liabilitiesStr: '₹ 0', assetsRaw: 30200000, liabilitiesRaw: 0, cases: 0, affidavitUrl: 'https://affidavit.eci.gov.in/',
+      promises: [{ id: 'p1', text: 'Ram Mandir Construction', delivered: true }, { id: 'p2', text: 'Article 370 Abrogation', delivered: true }]
+    },
+    {
+      id: '2', name: 'Rahul Gandhi', party: 'Indian National Congress (INC)', education: 'M.Phil', assetsStr: '₹ 20.4 Crores', liabilitiesStr: '₹ 49.7 Lakhs', assetsRaw: 204000000, liabilitiesRaw: 4970000, cases: 18, affidavitUrl: 'https://affidavit.eci.gov.in/',
+      promises: [{ id: 'p4', text: 'NYAY Scheme', delivered: false }, { id: 'p5', text: 'Caste Census', delivered: false }]
+    },
+    {
+      id: '3', name: 'Mamata Banerjee', party: 'All India Trinamool Congress', education: 'M.A., L.L.B', assetsStr: '₹ 16.7 Lakhs', liabilitiesStr: '₹ 0', assetsRaw: 1670000, liabilitiesRaw: 0, cases: 0, affidavitUrl: 'https://affidavit.eci.gov.in/',
+      promises: [{ id: 'p6', text: 'Kanyashree Prakalpa', delivered: true }]
+    },
+    {
+      id: '4', name: 'Arvind Kejriwal', party: 'Aam Aadmi Party (AAP)', education: 'B.Tech', assetsStr: '₹ 3.4 Crores', liabilitiesStr: '₹ 0', assetsRaw: 34000000, liabilitiesRaw: 0, cases: 47, affidavitUrl: 'https://affidavit.eci.gov.in/',
+      promises: [{ id: 'p7', text: 'Free Electricity (200 units)', delivered: true }, { id: 'p8', text: 'Mohalla Clinics', delivered: true }]
+    },
+    {
+      id: '5', name: 'Akhilesh Yadav', party: 'Samajwadi Party (SP)', education: 'M.Tech', assetsStr: '₹ 42.1 Crores', liabilitiesStr: '₹ 2.8 Crores', assetsRaw: 421000000, liabilitiesRaw: 28000000, cases: 2, affidavitUrl: 'https://affidavit.eci.gov.in/',
+      promises: [{ id: 'p9', text: 'Agra-Lucknow Expressway', delivered: true }]
+    },
+    {
+      id: '6', name: 'Mayawati', party: 'Bahujan Samaj Party (BSP)', education: 'B.A., L.L.B', assetsStr: '₹ 111.6 Crores', liabilitiesStr: '₹ 0', assetsRaw: 1116000000, liabilitiesRaw: 0, cases: 0, affidavitUrl: 'https://affidavit.eci.gov.in/',
+      promises: [{ id: 'p10', text: 'Dalit Empowerment', delivered: true }]
+    },
+    {
+      id: '7', name: 'M. K. Stalin', party: 'Dravida Munnetra Kazhagam', education: 'B.A.', assetsStr: '₹ 8.8 Crores', liabilitiesStr: '₹ 0', assetsRaw: 88000000, liabilitiesRaw: 0, cases: 4, affidavitUrl: 'https://affidavit.eci.gov.in/',
+      promises: [{ id: 'p11', text: 'Free Bus Travel for Women', delivered: true }]
+    },
+    {
+      id: '8', name: 'Nikhil Kumaraswamy', party: 'Janata Dal (Secular)', education: 'B.A.', assetsStr: '₹ 105.2 Crores', liabilitiesStr: '₹ 45.3 Crores', assetsRaw: 1052000000, liabilitiesRaw: 453000000, cases: 1, affidavitUrl: 'https://affidavit.eci.gov.in/',
+      promises: [{ id: 'p12', text: 'Farmers Loan Waiver Support', delivered: false }]
+    },
+    {
+      id: '9', name: 'Uddhav Thackeray', party: 'Shiv Sena (UBT)', education: 'B.A.', assetsStr: '₹ 143.2 Crores', liabilitiesStr: '₹ 15.5 Crores', assetsRaw: 1432000000, liabilitiesRaw: 155000000, cases: 23, affidavitUrl: 'https://affidavit.eci.gov.in/',
+      promises: [{ id: 'p13', text: 'Farm Loan Waiver (Mahatma Jyotirao Phule)', delivered: true }]
+    }
+  ]);
+  const [loading] = useState(false);
 
   return (
     <main className={`container main-container ${styles.candidatesPage}`}>

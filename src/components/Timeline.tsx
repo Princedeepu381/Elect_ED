@@ -24,7 +24,7 @@ export default function Timeline({ events }: TimelineProps) {
       </div>
       
       {events.map((event, index) => {
-        const IconComponent = (Icons as any)[event.icon] || Icons.Circle;
+        const IconComponent = (Icons as unknown as Record<string, Icons.LucideIcon>)[event.icon] || Icons.Circle;
         
         return (
           <div 

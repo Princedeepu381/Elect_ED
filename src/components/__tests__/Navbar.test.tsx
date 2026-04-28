@@ -9,17 +9,49 @@ jest.mock("next/navigation", () => ({
 describe("Navbar Component", () => {
   test("should render the branding logo", () => {
     render(<Navbar />);
-    // Check for the logo text since alt is now empty for a11y
     expect(screen.getAllByText(/Elect/i).length).toBeGreaterThan(0);
     expect(screen.getAllByText(/Ed/i).length).toBeGreaterThan(0);
   });
 
   test("should render all main navigation links", () => {
     render(<Navbar />);
-    const links = ["HOME", "GUIDE", "TIMELINE", "REGIONS", "QUIZ", "REMINDERS"];
-    links.forEach((link) => {
-      expect(screen.getByText(link)).toBeInTheDocument();
+    const links = ["HOME", "GUIDE", "TIMELINE", "REGIONS", "CANDIDATES", "EVM", "QUIZ", "REMINDERS", "RIGHTS"];
+    links.forEach(label => {
+      expect(screen.getAllByText(label).length).toBeGreaterThan(0);
     });
+  });
+
+  test("should open and close mobile menu", () => {
+    render(<Navbar />);
+    const menuBtn = screen.getByLabelText(/Open menu/i);
+    fireEvent.click(menuBtn);
+    
+    expect(screen.getByText(/NAVIGATION/i)).toBeInTheDocument();
+    
+    const closeBtn = screen.getByLabelText(/Close menu/i);
+    fireEvent.click(closeBtn);
+    
+    expect(screen.queryByText(/NAVIGATION/i)).not.toBeInTheDocument();
+  });
+
+  test("should close drawer when a mobile link is clicked", () => {
+    render(<Navbar />);
+    fireEvent.click(screen.getByLabelText(/Open menu/i));
+    
+    const mobileLink = screen.getAllByText(/GUIDE/i)[1]; // Second one is in the drawer
+    fireEvent.click(mobileLink);
+    
+    expect(screen.queryByText(/NAVIGATION/i)).not.toBeInTheDocument();
+  });
+
+  test("should close drawer when overlay is clicked", () => {
+    render(<Navbar />);
+    fireEvent.click(screen.getByLabelText(/Open menu/i));
+    
+    const overlay = screen.getByTestId("mobile-overlay");
+    fireEvent.click(overlay);
+    
+    expect(screen.queryByText(/NAVIGATION/i)).not.toBeInTheDocument();
   });
 
   test("should have the correct navigation role for accessibility", () => {
@@ -32,8 +64,7 @@ describe("Navbar Component", () => {
     expect(screen.getByText(/LIVE/i)).toBeInTheDocument();
   });
 
-  test("should open and close the mobile menu", () => {
-    // Set viewport to mobile size if necessary, but here we just test the button logic
+  test("should open and close the mobile menu via hamburger button", () => {
     render(<Navbar />);
     const hamburger = screen.getByLabelText(/Open menu/i);
     fireEvent.click(hamburger);
@@ -43,5 +74,24 @@ describe("Navbar Component", () => {
     const closeBtn = screen.getByLabelText(/Close menu/i);
     fireEvent.click(closeBtn);
     expect(screen.queryByText(/NAVIGATION/i)).not.toBeInTheDocument();
+  });
+
+  test("should render the LOGIN button linking to registration", () => {
+    render(<Navbar />);
+    const loginLink = screen.getByText(/LOGIN/i);
+    expect(loginLink).toBeInTheDocument();
+    expect(loginLink.closest('a')).toHaveAttribute('href', '/registration');
+  });
+
+  test("drawer content should not propagate click to overlay", () => {
+    render(<Navbar />);
+    fireEvent.click(screen.getByLabelText(/Open menu/i));
+    
+    // Click inside the drawer — should NOT close it
+    const drawerTitle = screen.getByText(/NAVIGATION/i);
+    fireEvent.click(drawerTitle);
+    
+    // Drawer should still be open
+    expect(screen.getByText(/NAVIGATION/i)).toBeInTheDocument();
   });
 });

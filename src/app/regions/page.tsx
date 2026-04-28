@@ -16,7 +16,7 @@ const InteractiveMap = dynamic(() => import("@/components/InteractiveMap"), {
   ),
 });
 
-const MAPS_API_KEY = process.env.NEXT_PUBLIC_MAPS_API_KEY ?? "";
+
 
 export default function RegionsPage() {
   const [selectedState, setSelectedState] = useState(statesData[0]);
@@ -68,10 +68,6 @@ export default function RegionsPage() {
           <InteractiveMap
             states={mapStates}
             selectedStateId={selectedState.id}
-            onStateSelect={(s) => {
-              const full = statesData.find((st) => st.id === s.id);
-              if (full) setSelectedState(full);
-            }}
           />
         </div>
       )}

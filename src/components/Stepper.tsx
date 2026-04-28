@@ -20,7 +20,7 @@ export default function Stepper({ steps, currentStepIndex, onStepClick }: Steppe
   return (
     <div className={styles.stepper}>
       {steps.map((step, index) => {
-        const IconComponent = (Icons as any)[step.icon] || Icons.Circle;
+        const IconComponent = (Icons as unknown as Record<string, Icons.LucideIcon>)[step.icon] || Icons.Circle;
         const isActive = index === currentStepIndex;
         const isCompleted = index < currentStepIndex;
 

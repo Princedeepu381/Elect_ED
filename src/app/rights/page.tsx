@@ -9,7 +9,7 @@ export default function RightsPage() {
     <main className={`container main-container ${styles.rightsPage}`}>
       <div className={styles.header}>
         <h1>Know Your Rights</h1>
-        <p className="text-secondary">Most voters are unaware of their legal rights at the polling booth. Familiarize yourself and don't let anyone scam or force you.</p>
+        <p className="text-secondary">Most voters are unaware of their legal rights at the polling booth. Familiarize yourself and don&apos;t let anyone scam or force you.</p>
       </div>
 
       <div className={styles.rightsGrid}>

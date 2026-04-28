@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+
 
 interface StateData {
   id: string;
@@ -14,7 +14,6 @@ interface StateData {
 interface InteractiveMapProps {
   states: StateData[];
   selectedStateId?: string;
-  onStateSelect: (state: StateData) => void;
 }
 
 /**
@@ -22,15 +21,10 @@ interface InteractiveMapProps {
  * This uses the official Google Maps Embed API which is a part of the Google Cloud ecosystem.
  * It provides a professional, popup-free experience for the hackathon submission.
  */
-export default function InteractiveMap({ states, selectedStateId, onStateSelect }: InteractiveMapProps) {
-  const [mounted, setMounted] = useState(false);
+export default function InteractiveMap({ states, selectedStateId }: InteractiveMapProps) {
   const selectedState = states.find((s) => s.id === selectedStateId);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted || !selectedState) return null;
+  if (!selectedState) return null;
 
   // Robust Google Maps Embed URL
   const embedUrl = `https://www.google.com/maps?q=${encodeURIComponent(selectedState.name)}%20India&output=embed`;

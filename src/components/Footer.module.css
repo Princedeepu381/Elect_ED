@@ -28,7 +28,7 @@
   margin-bottom: 0.25rem;
 }
 
-/* ═══ RESPONSIVE ═══ */
+/* RESPONSIVE */
 @media (max-width: 768px) {
   .footer {
     padding: 3rem 1.5rem;
@@ -221,4 +221,17 @@
 
 .securityIcon {
   color: var(--accent-primary);
+}
+
+.authoritativeBadge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  background: var(--accent-emerald);
+  color: #000;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #000;
 }

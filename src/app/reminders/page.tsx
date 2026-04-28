@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import styles from "./reminders.module.css";
-import { Bell, Calendar, Plus, Trash2, Clock, Download, AlertTriangle } from "lucide-react";
+import { Bell, Calendar, Plus, Trash2, Clock, Download } from "lucide-react";
 import remindersData from "@/data/reminders.json";
 
 interface Reminder {

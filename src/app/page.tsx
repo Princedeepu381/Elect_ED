@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import styles from './home.module.css';
 import { BookOpen, Clock, MessageSquare, Map, HelpCircle, Bell, ArrowRight, Zap, Target, Vote } from 'lucide-react';
@@ -26,6 +27,8 @@ const steps = [
 ];
 
 export default function Home() {
+  const router = useRouter();
+
   return (
     <div className={styles.container}>
       <div className="mesh-bg" />
@@ -123,7 +126,7 @@ export default function Home() {
                   if (isAI) {
                     window.dispatchEvent(new CustomEvent('open-chatbot'));
                   } else {
-                    window.location.href = f.href;
+                    router.push(f.href);
                   }
                 }}
                 onKeyDown={(e) => {
@@ -131,7 +134,7 @@ export default function Home() {
                     if (isAI) {
                       window.dispatchEvent(new CustomEvent('open-chatbot'));
                     } else {
-                      window.location.href = f.href;
+                      router.push(f.href);
                     }
                   }
                 }}

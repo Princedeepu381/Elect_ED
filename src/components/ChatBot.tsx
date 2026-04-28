@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { MessageSquare, X, Send, Bot, User, Minimize2 } from "lucide-react";
+import { MessageSquare, Send, Bot, User, Minimize2 } from "lucide-react";
 import styles from "./ChatBot.module.css";
 
 export default function ChatBot() {
@@ -68,7 +68,7 @@ export default function ChatBot() {
           return newMessages;
         });
       }
-    } catch (error) {
+    } catch {
       setMessages(prev => [...prev, { role: "assistant", content: "I'm having trouble connecting right now. Please try again later." }]);
       setIsLoading(false);
     }

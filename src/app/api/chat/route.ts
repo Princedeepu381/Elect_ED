@@ -65,7 +65,7 @@ export async function POST(req: NextRequest) {
 
     // Streaming call to Gemini
     const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:streamGenerateContent?key=${apiKey}`,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:streamGenerateContent?key=${apiKey}`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -84,9 +84,11 @@ export async function POST(req: NextRequest) {
     );
 
     if (!response.ok) {
-      const errorData = await response.json();
+      const errorData = await response.json().catch(() => null);
+      const errMsg = errorData?.error?.message || errorData?.details || "Upstream error";
+      console.error("[Chat API Error]: response not ok:", response.status, errMsg);
       return new Response(
-        JSON.stringify({ details: errorData.error?.message ?? "Upstream error" }),
+        JSON.stringify({ details: errMsg }),
         { status: response.status }
       );
     }
@@ -106,7 +108,7 @@ export async function POST(req: NextRequest) {
           buffer += decoder.decode(value, { stream: true });
           
           // Use a robust global regex to find all "text": "..." matches
-          const textMatches = buffer.matchAll(/"text":\s*"((?:[^"\\]|\\.)*)"/g);
+          const textMatches = Array.from(buffer.matchAll(/"text":\s*"((?:[^"\\]|\\.)*)"/g));
           
           for (const match of textMatches) {
             let text = match[1];
@@ -116,10 +118,10 @@ export async function POST(req: NextRequest) {
           }
 
           // Clear buffer of processed parts to avoid duplication
-          // Note: Simplified for performance, but robust for streaming text
-          const lastIndex = buffer.lastIndexOf('"text":');
-          if (lastIndex !== -1) {
-            buffer = buffer.substring(lastIndex);
+          if (textMatches.length > 0) {
+            const lastMatch = textMatches[textMatches.length - 1];
+            const endOfLastMatch = (lastMatch.index ?? 0) + lastMatch[0].length;
+            buffer = buffer.substring(endOfLastMatch);
           }
         }
         controller.close();
