@@ -1,0 +1,80 @@
+[
+  {
+    "id": "registration",
+    "title": "Voter Registration",
+    "description": "The first step to participating in democracy is ensuring you are registered to vote.",
+    "content": "To vote in India, you must be a citizen of India, 18 years of age or above on the qualifying date, and a resident of the polling area where you want to be enrolled. You can register online through the Voter Service Portal (VSP) or the Voter Helpline App.",
+    "keyFacts": [
+      "Form 6 is for new voters.",
+      "Requires proof of age and residence.",
+      "Can be done online or at ERO offices."
+    ],
+    "tip": "Keep your Aadhaar or Address Proof ready before starting the online application.",
+    "icon": "UserPlus"
+  },
+  {
+    "id": "electoral-roll",
+    "title": "Checking the Electoral Roll",
+    "description": "Verify your name is on the official list of voters for your constituency.",
+    "content": "Even if you have a Voter ID card, you must verify your name is in the Electoral Roll. You can check this online by entering your EPIC number or searching by details on the official ECI website.",
+    "keyFacts": [
+      "Use EPIC number for faster search.",
+      "Check polling station details.",
+      "Verify part number and serial number."
+    ],
+    "tip": "Download the Voter Helpline App to check your name instantly on the go.",
+    "icon": "Search"
+  },
+  {
+    "id": "nominations",
+    "title": "Candidate Nominations",
+    "description": "Understanding how individuals become candidates in an election.",
+    "content": "Candidates must be at least 25 years old to contest Lok Sabha or Vidhan Sabha elections. they must file a nomination form, take an oath, and deposit a security amount. They also submit an affidavit disclosing their educational background, assets, and criminal records (if any).",
+    "keyFacts": [
+      "Disclosure of assets is mandatory.",
+      "Voters can view candidate affidavits.",
+      "Security deposit is required."
+    ],
+    "tip": "You can read every candidate's background on the 'Know Your Candidate' portal.",
+    "icon": "UserCheck"
+  },
+  {
+    "id": "campaigning",
+    "title": "Election Campaigning",
+    "description": "The period where candidates and parties reach out to voters.",
+    "content": "Campaigning ends 48 hours before the close of polls. During this time, the Model Code of Conduct (MCC) is in force, which ensures fair play and prevents the ruling party from gaining an unfair advantage using government machinery.",
+    "keyFacts": [
+      "MCC ensures a level playing field.",
+      "Silent period starts 48h before polls.",
+      "Strict rules on spending and decorum."
+    ],
+    "tip": "Report any MCC violations through the ECI's 'cVIGIL' app for immediate action.",
+    "icon": "Megaphone"
+  },
+  {
+    "id": "polling-day",
+    "title": "Polling Day Process",
+    "description": "What happens inside the polling booth on election day.",
+    "content": "On entering the booth, your identity is verified. An indelible ink mark is placed on your finger. You then proceed to the Electronic Voting Machine (EVM). Press the button next to your chosen candidate's name. The VVPAT machine will show a slip for 7 seconds to confirm your vote.",
+    "keyFacts": [
+      "Ink mark prevents multiple voting.",
+      "VVPAT provides a physical audit trail.",
+      "Voting is secret and secure."
+    ],
+    "tip": "Cell phones and cameras are strictly prohibited inside the polling booth.",
+    "icon": "Fingerprint"
+  },
+  {
+    "id": "counting",
+    "title": "Counting & Results",
+    "description": "How votes are tallied and winners are declared.",
+    "content": "Counting is done under high security and in the presence of candidate representatives. EVMs are unsealed, and votes are tallied. If required, VVPAT slips from randomly selected booths are also counted to verify the EVM results.",
+    "keyFacts": [
+      "Strict protocol for sealing EVMs.",
+      "Multi-layer security during counting.",
+      "Immediate declaration of results."
+    ],
+    "tip": "Results are updated in real-time on the official ECI Results portal.",
+    "icon": "BarChart3"
+  }
+]

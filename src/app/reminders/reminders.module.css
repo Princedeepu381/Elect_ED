@@ -1,0 +1,338 @@
+.wrapper {
+  min-height: 100vh;
+  padding-bottom: 8rem;
+}
+
+.header {
+  padding: 6rem 2rem 4rem;
+  text-align: center;
+}
+
+.badge {
+  font-family: var(--font-display);
+  color: var(--accent-primary);
+  font-weight: 800;
+  letter-spacing: 0.3em;
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: clamp(3rem, 8vw, 5rem);
+  line-height: 1;
+  margin-bottom: 1.5rem;
+}
+
+.accent {
+  color: var(--accent-primary);
+}
+
+.subtitle {
+  max-width: 600px;
+  margin: 0 auto;
+  color: var(--text-secondary);
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+
+.main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.addSection {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.input {
+  flex: 1;
+  background: white;
+  border: 1px solid var(--border-bold);
+  padding: 1.25rem 2rem;
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  font-size: 0.9rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 15px rgba(249, 115, 22, 0.15);
+}
+
+.input::placeholder {
+  color: var(--text-muted);
+}
+
+.addBtn {
+  background: var(--text-primary);
+  color: white;
+  border: none;
+  padding: 0 2.5rem;
+  font-family: var(--font-display);
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.05em;
+}
+
+.addBtn:hover {
+  background: var(--accent-primary);
+  transform: translateY(-2px);
+}
+
+.sectionLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  margin-top: 1rem;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.card {
+  background: white;
+  border: 1px solid var(--border-bold);
+  padding: 2.5rem;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: var(--shadow-sm);
+}
+
+.card:hover {
+  background: white;
+  border-color: var(--accent-primary);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(249, 115, 22, 0.15);
+  z-index: 10;
+}
+
+.nearestCard {
+  border-color: var(--accent-primary) !important;
+  background: #fffcf9;
+}
+
+.pastCard {
+  opacity: 0.4;
+}
+
+.pastCard .cardTitle {
+  text-decoration: line-through;
+}
+
+.typeTag {
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.nextBadge {
+  background: var(--accent-amber);
+  color: #000;
+  padding: 0.15rem 0.5rem;
+  font-size: 0.55rem;
+  letter-spacing: 0.1em;
+}
+
+.cardTitle {
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.cardDesc {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+/* ═══════ RESPONSIVE ═══════ */
+@media (max-width: 768px) {
+  .header {
+    padding: 4rem 1.5rem 2rem;
+  }
+
+  .main {
+    padding: 0 1rem;
+  }
+
+  .addSection {
+    flex-direction: column;
+  }
+
+  .addBtn {
+    padding: 1.25rem;
+    justify-content: center;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+
+  .countdown {
+    gap: 0.5rem;
+    justify-content: center;
+  }
+
+  .countNum {
+    font-size: 1.5rem;
+  }
+
+  .cardActions {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+
+  .meta {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
+
+/* ═══ Countdown Timer ═══ */
+.countdown {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.countItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 50px;
+}
+
+.countNum {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--accent-primary);
+  line-height: 1;
+}
+
+.countLabel {
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
+.countSep {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--text-muted);
+  margin-top: -0.5rem;
+}
+
+/* ═══ Card Actions ═══ */
+.cardActions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.meta {
+  display: flex;
+  gap: 2rem;
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+.actionBtns {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.calBtn {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  color: var(--accent-primary);
+  padding: 0.4rem 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.calBtn:hover {
+  background: var(--accent-primary);
+  color: white;
+  border-color: var(--accent-primary);
+}
+
+.deleteBtn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0.4rem;
+  display: flex;
+  align-items: center;
+}
+
+.deleteBtn:hover {
+  color: var(--accent-rose);
+  border-color: rgba(244, 63, 94, 0.1);
+}
+
+/* ═══ HUD ═══ */
+.hudItem { display: flex; flex-direction: column; }
+.hudLabel { font-size: 0.65rem; color: var(--text-secondary); letter-spacing: 0.2em; font-weight: 800; }
+.hudValue { font-family: var(--font-display); font-size: 1.1rem; font-weight: 900; color: var(--accent-secondary); }
+
+@media (max-width: 640px) {
+  .addSection { flex-direction: column; }
+  .card { padding: 1.5rem; }
+  .countdown { gap: 0.5rem; }
+  .countNum { font-size: 1.5rem; }
+  .cardActions { flex-direction: column; gap: 1rem; align-items: flex-start; }
+}

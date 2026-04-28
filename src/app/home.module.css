@@ -1,0 +1,580 @@
+.container {
+  min-height: 100vh;
+  width: 100%;
+  color: var(--text-primary);
+  scroll-behavior: smooth;
+  background-color: var(--bg-primary);
+}
+
+/* ═══════ LIVE TICKER ═══════ */
+.ticker {
+  background: var(--text-primary);
+  color: white;
+  padding: 0.75rem 0;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tickerTrack {
+  display: inline-block;
+  animation: tickerScroll 40s linear infinite;
+}
+
+.tickerTrack span {
+  display: inline-block;
+  padding: 0 3rem;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+}
+
+@keyframes tickerScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.hero {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.badge {
+  color: var(--accent-primary);
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: 0.3em;
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+  display: inline-block;
+}
+
+.accentText {
+  color: var(--accent-primary);
+}
+
+.heroGrid {
+  max-width: 1400px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: center;
+  gap: 4rem;
+  z-index: 10;
+}
+
+.heroContent {
+  text-align: left;
+}
+
+.title {
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  line-height: 1.1;
+  margin-bottom: 2rem;
+  color: var(--text-primary);
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  max-width: 580px;
+  margin: 0 0 3rem;
+  line-height: 1.6;
+}
+
+.actions {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+/* ═══ STATS DASHBOARD (Right Side) ═══ */
+.heroVisual {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  position: relative;
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+.statCard {
+  background: white;
+  border: 2px solid var(--text-primary);
+  padding: 2rem;
+  border-radius: 0;
+  box-shadow: 8px 8px 0 rgba(0,0,0,1);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.statCard:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 12px 12px 0 var(--accent-primary);
+}
+
+.statVal {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--text-primary);
+}
+
+.statLab {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: var(--accent-primary);
+}
+
+/* ═══════ RESPONSIVE ═══════ */
+@media (max-width: 1100px) {
+  .heroGrid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 3rem;
+  }
+
+  .heroContent {
+    text-align: center;
+  }
+
+  .subtitle {
+    margin: 0 auto 3rem;
+  }
+
+  .actions {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 0 1rem;
+    min-height: auto;
+    padding-top: 80px;
+    padding-bottom: 40px;
+  }
+
+  .title {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .heroVisual {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .statCard {
+    padding: 1.5rem;
+  }
+
+  .statVal {
+    font-size: 1.8rem;
+  }
+
+  .scrollIndicator {
+    display: none;
+  }
+}
+
+.scrollIndicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  font-weight: 800;
+}
+
+.line {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, var(--accent-primary), transparent);
+}
+
+/* ═══════ SECTION SHARED ═══════ */
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.sectionBadge {
+  font-family: var(--font-display);
+  color: var(--accent-primary);
+  font-weight: 800;
+  letter-spacing: 0.3em;
+  font-size: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.sectionTitle {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  line-height: 1;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+}
+
+.sectionSubtitle {
+  color: var(--text-secondary);
+  font-size: 1.15rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* ═══════ FEATURE CARDS ═══════ */
+.featuresSection {
+  padding: 6rem 2rem;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.featureGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.featureCard {
+  background: white;
+  border: 1px solid var(--border-bold);
+  padding: 3rem 2.5rem;
+  position: relative;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.featureCard:hover {
+  background: white;
+  border-color: var(--accent-primary);
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 30px 60px rgba(249, 115, 22, 0.15);
+  z-index: 10;
+}
+
+.featureIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.featureCard:hover .featureIcon {
+  transform: scale(1.2) rotate(5deg);
+}
+
+.featureIcon.blue { background: #eff6ff; color: #2563eb; }
+.featureIcon.cyan { background: #ecfeff; color: #0891b2; }
+.featureIcon.violet { background: #f5f3ff; color: #7c3aed; }
+.featureIcon.amber { background: #fffbeb; color: #d97706; }
+.featureIcon.emerald { background: #ecfdf5; color: #059669; }
+.featureIcon.rose { background: #fff1f2; color: #e11d48; }
+
+.featureCard h3 {
+  font-size: 1.35rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.featureCard p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.7;
+  flex: 1;
+}
+
+.cardArrow {
+  margin-top: 2rem;
+  color: var(--text-muted);
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+.featureCard:hover .cardArrow {
+  color: var(--accent-primary);
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ═══════ STATS SECTION ═══════ */
+.statsSection {
+  padding: 6rem 2rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.statGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4rem;
+}
+
+.statItem {
+  text-align: center;
+}
+
+.statNum {
+  display: block;
+  font-size: clamp(3rem, 8vw, 5rem);
+  font-weight: 900;
+  font-family: var(--font-display);
+  color: var(--text-primary);
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, var(--accent-secondary), var(--accent-primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.statLabel {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
+/* ═══════ HOW IT WORKS ═══════ */
+.howSection {
+  padding: 6rem 2rem;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.stepsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.stepCard {
+  background: white;
+  border: 1px solid var(--border-bold);
+  padding: 4rem 3rem;
+  text-align: center;
+  position: relative;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.stepCard:hover {
+  border-color: var(--accent-primary);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(249, 115, 22, 0.1);
+}
+
+.stepNum {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 4rem;
+  color: rgba(249, 115, 22, 0.05);
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+}
+
+.stepIcon {
+  color: var(--accent-primary);
+  margin-bottom: 2rem;
+}
+
+.stepCard h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.stepCard p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+/* ═══════ MISSION CTA ═══════ */
+.missionSection {
+  padding: 8rem 2rem 12rem;
+}
+
+.missionCard {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 6rem 4rem;
+  background: var(--text-primary);
+  color: white;
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 40px 80px rgba(15, 23, 42, 0.2);
+}
+
+.missionCard h2 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  margin-bottom: 2rem;
+  color: white;
+}
+
+.missionCard p {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 auto 3.5rem;
+  max-width: 700px;
+}
+
+/* ═══════ HUD ═══════ */
+.hudItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.hudLabel {
+  font-size: 0.65rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.2em;
+  font-weight: 800;
+}
+
+.hudValue {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: var(--accent-secondary);
+}
+
+/* ═══════ TOOLKIT ═══════ */
+.toolkitSection {
+  padding: 8rem 2rem;
+  background: white;
+}
+
+.toolkitContent {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.toolkitGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+.toolCard {
+  background: var(--bg-secondary);
+  padding: 3rem;
+  border: 1px solid var(--border-bold);
+  border-radius: 12px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.toolCard:hover {
+  background: white;
+  border-color: var(--accent-primary);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(249, 115, 22, 0.1);
+}
+
+.toolIcon {
+  color: var(--accent-primary);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.toolCard h4 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-primary);
+}
+
+.toolCard p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* ═══════ RESPONSIVE ═══════ */
+@media (max-width: 1024px) {
+  .heroGrid { grid-template-columns: 1fr; gap: 4rem; }
+  .heroContent { text-align: center; }
+  .actions { justify-content: center; }
+  .subtitle { margin: 0 auto 3rem; }
+  .featureGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .stepsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .toolkitGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .hud-container {
+    display: none;
+  }
+  .title {
+    font-size: 3.5rem;
+  }
+  .featureGrid {
+    grid-template-columns: 1fr;
+  }
+  .statGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .stepsGrid {
+    grid-template-columns: 1fr;
+  }
+  .missionCard {
+    padding: 3rem 2rem;
+  }
+}

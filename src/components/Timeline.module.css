@@ -1,0 +1,118 @@
+.timelineContainer {
+  position: relative;
+  padding: var(--spacing-16) 0;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.line {
+  position: absolute;
+  left: 40px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, rgba(6, 182, 212, 0.2), transparent);
+  z-index: 0;
+}
+
+.eventWrapper {
+  display: flex;
+  gap: var(--spacing-12);
+  margin-bottom: var(--spacing-12);
+  position: relative;
+}
+
+.dot {
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.dotInner {
+  width: 48px;
+  height: 48px;
+  background: var(--bg-elevated);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: all 0.3s;
+}
+
+.glow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--accent-cyan) 0%, transparent 70%);
+  opacity: 0.1;
+  filter: blur(10px);
+  z-index: 1;
+}
+
+/* Phase Colors */
+.pre-election .dotInner { border-color: var(--accent-blue); color: var(--accent-blue); }
+.pre-election .glow { background: radial-gradient(circle, var(--accent-blue) 0%, transparent 70%); }
+
+.election .dotInner { border-color: var(--accent-emerald); color: var(--accent-emerald); }
+.election .glow { background: radial-gradient(circle, var(--accent-emerald) 0%, transparent 70%); }
+
+.post-election .dotInner { border-color: var(--accent-amber); color: var(--accent-amber); }
+.post-election .glow { background: radial-gradient(circle, var(--accent-amber) 0%, transparent 70%); }
+
+.content {
+  flex: 1;
+  padding: var(--spacing-8);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-4);
+}
+
+.period {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.badge {
+  padding: 2px 10px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.badge.pre-election { background: rgba(59, 130, 246, 0.1); color: var(--accent-blue); }
+.badge.election { background: rgba(16, 185, 129, 0.1); color: var(--accent-emerald); }
+.badge.post-election { background: rgba(245, 158, 11, 0.1); color: var(--accent-amber); }
+
+.title {
+  font-size: 1.5rem;
+  margin-bottom: var(--spacing-2);
+}
+
+.description {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .line { left: 24px; }
+  .dot { width: 48px; }
+  .dotInner { width: 40px; height: 40px; }
+  .eventWrapper { gap: var(--spacing-4); }
+  .content { padding: var(--spacing-4); }
+}

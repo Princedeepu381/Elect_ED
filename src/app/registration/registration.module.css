@@ -1,0 +1,252 @@
+.registrationPage {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+}
+
+.header h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: var(--spacing-2);
+}
+
+.contentGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-6);
+}
+
+@media (min-width: 1024px) {
+  .contentGrid {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.mainColumn {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.section {
+  padding: var(--spacing-6);
+  border-radius: var(--border-radius);
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-6);
+}
+
+.sectionTitle {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  font-size: 1.5rem;
+  margin-bottom: var(--spacing-4);
+}
+
+.stepNum {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: var(--accent-primary);
+  color: white;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  font-family: var(--font-display);
+}
+
+.formBadge {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  padding: var(--spacing-1) var(--spacing-2);
+  background: rgba(15, 23, 42, 0.05);
+  border-radius: var(--border-radius);
+  font-weight: bold;
+}
+
+.formSelector {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-4);
+  margin-bottom: var(--spacing-6);
+}
+
+.formTab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-4);
+  background: transparent;
+  border: 2px solid var(--border-strong);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+}
+
+.formTab:hover {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+}
+
+.activeTab {
+  background: rgba(249, 115, 22, 0.1);
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
+
+.formDetails {
+  background: rgba(15, 23, 42, 0.03);
+  padding: var(--spacing-4);
+  border-left: 4px solid var(--accent-primary);
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}
+
+.formDetails h3 {
+  margin-bottom: var(--spacing-2);
+  color: var(--text-primary);
+}
+
+.formDetails p {
+  color: var(--text-secondary);
+}
+
+.documentsList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.docItem {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+  padding: var(--spacing-4);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--border-radius);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.docIcon {
+  color: var(--text-muted);
+}
+
+.docInfo {
+  flex: 1;
+}
+
+.docInfo h4 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--text-primary);
+}
+
+.docInfo p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.progressBar {
+  height: 4px;
+  background: var(--border-subtle);
+  border-radius: 2px;
+  margin-top: var(--spacing-2);
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--accent-primary);
+  transition: width 0.3s ease;
+}
+
+.fileInput {
+  display: none;
+}
+
+.uploadBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.05);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.uploadBtn:hover {
+  background: var(--accent-primary);
+  color: white;
+}
+
+.successIcon {
+  color: var(--accent-emerald);
+}
+
+.proTip {
+  margin-top: var(--spacing-6);
+  padding: var(--spacing-4);
+  background: rgba(217, 119, 6, 0.1);
+  border: 1px solid rgba(217, 119, 6, 0.2);
+  border-radius: var(--border-radius);
+  color: #92400e;
+  font-size: 0.95rem;
+}
+
+.eciCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--spacing-8) var(--spacing-6);
+  border-radius: var(--border-radius);
+  background: #0f172a;
+  color: white;
+  border-color: #1e293b;
+}
+
+.eciCard h2 {
+  font-size: 1.8rem;
+  margin-bottom: var(--spacing-4);
+  color: white;
+}
+
+.eciCard p {
+  color: #94a3b8;
+  margin-bottom: var(--spacing-6);
+}
+
+.eciIcon {
+  color: var(--accent-primary);
+  margin-bottom: var(--spacing-4);
+}
+
+.eciCard .btn-primary {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  width: 100%;
+  margin-bottom: var(--spacing-4);
+}
+
+.redirectNote {
+  font-size: 0.8rem;
+  color: #64748b;
+}

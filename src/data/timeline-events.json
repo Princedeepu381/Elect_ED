@@ -1,0 +1,58 @@
+[
+  {
+    "id": "announcement",
+    "title": "Election Announcement",
+    "period": "T-Minus 6-8 Weeks",
+    "phase": "pre-election",
+    "description": "The Election Commission of India (ECI) announces the schedule, and the Model Code of Conduct comes into effect immediately.",
+    "icon": "Calendar"
+  },
+  {
+    "id": "voter-list",
+    "title": "Electoral Roll Updates",
+    "period": "T-Minus 4-5 Weeks",
+    "phase": "pre-election",
+    "description": "The final opportunity for citizens to register or update their details in the voter list before the freeze period.",
+    "icon": "Users"
+  },
+  {
+    "id": "nomination",
+    "title": "Candidate Nomination",
+    "period": "T-Minus 3 Weeks",
+    "phase": "pre-election",
+    "description": "Candidates file their nominations and affidavits. Scrutiny of papers followed by a window for withdrawal.",
+    "icon": "FileText"
+  },
+  {
+    "id": "campaign",
+    "title": "Active Campaigning",
+    "period": "T-Minus 2 Weeks",
+    "phase": "pre-election",
+    "description": "Political parties and candidates reach out to the electorate through rallies, manifestos, and advertisements.",
+    "icon": "Megaphone"
+  },
+  {
+    "id": "polling",
+    "title": "Polling Day",
+    "period": "Day Zero",
+    "phase": "election",
+    "description": "The day of decision. Citizens cast their votes at designated polling booths using EVMs and VVPATs.",
+    "icon": "Fingerprint"
+  },
+  {
+    "id": "counting",
+    "title": "Counting Day",
+    "period": "Day +3 to +7",
+    "phase": "post-election",
+    "description": "Votes are counted under strict surveillance, and results are officially declared by the Returning Officer.",
+    "icon": "BarChart3"
+  },
+  {
+    "id": "formation",
+    "title": "Government Formation",
+    "period": "Day +10",
+    "phase": "post-election",
+    "description": "The majority party or coalition is invited to form the government, followed by the swearing-in ceremony.",
+    "icon": "Gavel"
+  }
+]

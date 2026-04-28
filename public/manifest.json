@@ -1,0 +1,43 @@
+{
+  "name": "ElectEd",
+  "short_name": "ElectEd",
+  "description": "AI-powered Indian election education platform for first-time voters.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050b18",
+  "theme_color": "#4f46e5",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "government", "utilities"],
+  "lang": "en-IN",
+  "shortcuts": [
+    {
+      "name": "Election Guide",
+      "url": "/guide",
+      "description": "Step-by-step election process guide"
+    },
+    {
+      "name": "Quiz",
+      "url": "/quiz",
+      "description": "Test your election knowledge"
+    },
+    {
+      "name": "Reminders",
+      "url": "/reminders",
+      "description": "Voter deadline reminders"
+    }
+  ]
+}

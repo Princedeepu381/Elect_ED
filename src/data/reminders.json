@@ -1,0 +1,23 @@
+[
+  {
+    "id": "nat-voter-day",
+    "title": "National Voters' Day",
+    "date": "2027-01-25",
+    "type": "event",
+    "description": "Celebrated to encourage more young voters to take part in the political process."
+  },
+  {
+    "id": "ls-2029",
+    "title": "General Elections 2029",
+    "date": "2029-04-15",
+    "type": "election",
+    "description": "Tentative start date for the next Lok Sabha General Elections."
+  },
+  {
+    "id": "reg-deadline",
+    "title": "Registration Deadline",
+    "date": "2026-12-31",
+    "type": "deadline",
+    "description": "Ensure your name is updated in the electoral roll before the year-end revision."
+  }
+]

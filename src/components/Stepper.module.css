@@ -1,0 +1,120 @@
+.stepper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+  position: sticky;
+  top: 100px;
+}
+
+.stepWrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-4);
+  cursor: pointer;
+  position: relative;
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+
+.stepWrapper:hover {
+  opacity: 1;
+}
+
+.stepWrapper.active {
+  opacity: 1;
+}
+
+.stepWrapper.completed {
+  opacity: 0.8;
+}
+
+.iconWrapper {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-elevated);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-secondary);
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.active .iconWrapper {
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+  box-shadow: var(--glow-cyan);
+}
+
+.completed .iconWrapper {
+  background: var(--accent-emerald);
+  border-color: var(--accent-emerald);
+  color: white;
+}
+
+.labelWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.stepTitle {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+.stepStatus {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.active .stepStatus {
+  color: var(--accent-cyan);
+}
+
+.completed .stepStatus {
+  color: var(--accent-emerald);
+}
+
+.line {
+  position: absolute;
+  left: 20px;
+  top: 40px;
+  width: 1px;
+  height: var(--spacing-8);
+  background: rgba(255, 255, 255, 0.1);
+  z-index: 1;
+}
+
+.completed .line {
+  background: var(--accent-emerald);
+}
+
+@media (max-width: 1024px) {
+  .stepper {
+    flex-direction: row;
+    position: static;
+    overflow-x: auto;
+    padding-bottom: var(--spacing-4);
+    gap: var(--spacing-4);
+  }
+
+  .stepWrapper {
+    flex-direction: column;
+    align-items: center;
+    min-width: 100px;
+    text-align: center;
+  }
+
+  .line {
+    display: none;
+  }
+  
+  .labelWrapper {
+    align-items: center;
+  }
+}

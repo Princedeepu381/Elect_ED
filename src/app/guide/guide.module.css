@@ -1,0 +1,221 @@
+.wrapper {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-primary);
+}
+
+.header {
+  padding: 4rem 2rem 2rem;
+  z-index: 10;
+}
+
+.progressContainer {
+  width: 100%;
+  height: 4px;
+  background: var(--bg-secondary);
+  margin-bottom: 2rem;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progressBar {
+  height: 100%;
+  background: linear-gradient(to right, var(--accent-primary), var(--accent-amber));
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.headerContent {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.stepCounter {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  color: var(--accent-primary);
+  letter-spacing: 0.3em;
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.stepTitle {
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 1;
+  color: var(--text-primary);
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem;
+}
+
+.narrativeContainer {
+  width: 100%;
+  max-width: 800px;
+}
+
+.contentCard {
+  background: white;
+  border: 1px solid var(--border-bold);
+  padding: 4rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.contentCard:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent-primary);
+  box-shadow: 0 30px 60px rgba(249, 115, 22, 0.15);
+}
+
+.description {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  line-height: 1.4;
+  margin-bottom: 3rem;
+  font-weight: 600;
+}
+
+.mainText {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 3rem;
+}
+
+.factsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.factItem {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.factDot {
+  width: 6px;
+  height: 6px;
+  background: var(--accent-primary);
+  border-radius: 50%;
+  margin-top: 0.6rem;
+}
+
+.factItem span {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+.tipBox {
+  background: var(--bg-secondary);
+  border-left: 3px solid var(--accent-primary);
+  padding: 2rem;
+  border-radius: 0 12px 12px 0;
+}
+
+.tipLabel {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 900;
+  font-size: 0.75rem;
+  color: var(--accent-primary);
+  letter-spacing: 0.2em;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.tipBox p {
+  font-size: 1rem;
+  color: var(--text-secondary);
+}
+
+.footerHUD {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 1000px;
+  background: white;
+  padding: 1.5rem 3rem;
+  border-radius: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-lg);
+  z-index: 100;
+}
+
+.navBtn {
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+}
+
+.navBtn:disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+}
+
+.navBtn:hover:not(:disabled) {
+  color: var(--accent-primary);
+}
+
+.journeyIndicator {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--bg-elevated);
+  transition: all 0.3s ease;
+}
+
+.activeDot {
+  background: var(--accent-primary);
+  transform: scale(1.5);
+}
+
+.completedDot {
+  background: var(--accent-secondary);
+}
+
+.finishBtn {
+  color: var(--accent-primary);
+}
+
+@media (max-width: 768px) {
+  .contentCard {
+    padding: 2rem;
+  }
+  
+  .footerHUD {
+    padding: 1rem 1.5rem;
+    width: 95%;
+  }
+  
+  .journeyIndicator {
+    display: none;
+  }
+}

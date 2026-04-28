@@ -1,0 +1,56 @@
+[
+  {
+    "id": "basics",
+    "title": "Election Basics",
+    "description": "Test your knowledge on the fundamental rules of Indian elections.",
+    "questions": [
+      {
+        "question": "What is the minimum age to register as a voter in India?",
+        "options": ["16", "18", "21", "25"],
+        "correctIndex": 1,
+        "explanation": "Citizens who are 18 years of age or above on the qualifying date are eligible to register as voters."
+      },
+      {
+        "question": "Which form is used for new voter registration?",
+        "options": ["Form 6", "Form 7", "Form 8", "Form 10"],
+        "correctIndex": 0,
+        "explanation": "Form 6 is specifically for the registration of new voters."
+      },
+      {
+        "question": "What does EPIC stand for in the context of Voter IDs?",
+        "options": [
+          "Election Process Identification Card",
+          "Electoral Photo Identity Card",
+          "Electronic Public ID Card",
+          "Electoral People Identity Card"
+        ],
+        "correctIndex": 1,
+        "explanation": "EPIC stands for Electoral Photo Identity Card."
+      }
+    ]
+  },
+  {
+    "id": "process",
+    "title": "Voting Process",
+    "description": "How well do you know what happens on polling day?",
+    "questions": [
+      {
+        "question": "How long does a VVPAT slip remain visible for the voter?",
+        "options": ["3 seconds", "5 seconds", "7 seconds", "10 seconds"],
+        "correctIndex": 2,
+        "explanation": "The VVPAT slip stays visible through the glass window for 7 seconds before falling into the box."
+      },
+      {
+        "question": "What happens immediately after your identity is verified at the polling booth?",
+        "options": [
+          "You cast your vote",
+          "Your finger is marked with indelible ink",
+          "You sign the register",
+          "You enter the voting compartment"
+        ],
+        "correctIndex": 1,
+        "explanation": "After identity verification, the second polling officer marks your left forefinger with indelible ink."
+      }
+    ]
+  }
+]

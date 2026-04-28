@@ -1,0 +1,104 @@
+.rightsPage {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+}
+
+.header h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: var(--spacing-2);
+}
+
+.rightsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-6);
+  margin-bottom: var(--spacing-4);
+}
+
+.rightCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: var(--spacing-6);
+  border-radius: var(--border-radius);
+  transition: transform 0.2s;
+}
+
+.rightCard:hover {
+  transform: translateY(-5px);
+}
+
+.rightCard h3 {
+  font-size: 1.25rem;
+  margin-bottom: var(--spacing-2);
+  color: var(--text-primary);
+}
+
+.rightCard p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.iconContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: var(--border-radius);
+  margin-bottom: var(--spacing-4);
+}
+
+.blueIcon {
+  background: rgba(37, 99, 235, 0.1);
+  color: var(--accent-blue);
+}
+
+.roseIcon {
+  background: rgba(225, 29, 72, 0.1);
+  color: var(--accent-rose);
+}
+
+.emeraldIcon {
+  background: rgba(5, 150, 105, 0.1);
+  color: var(--accent-emerald);
+}
+
+.violetIcon {
+  background: rgba(124, 58, 237, 0.1);
+  color: var(--accent-violet);
+}
+
+.amberIcon {
+  background: rgba(217, 119, 6, 0.1);
+  color: var(--accent-amber);
+}
+
+.warningCard {
+  background: rgba(225, 29, 72, 0.05);
+  border: 2px solid rgba(225, 29, 72, 0.2);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-6);
+  text-align: center;
+  margin-top: var(--spacing-4);
+}
+
+.warningCard h2 {
+  color: var(--accent-rose);
+  margin-bottom: var(--spacing-2);
+  font-size: 1.5rem;
+  letter-spacing: 0.1em;
+}
+
+.warningCard p {
+  color: var(--text-primary);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.warningCard strong {
+  color: var(--accent-blue);
+  cursor: pointer;
+  text-decoration: underline;
+}

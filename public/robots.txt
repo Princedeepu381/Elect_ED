@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://elected-app-117353888839.asia-south1.run.app/sitemap.xml

@@ -1,0 +1,342 @@
+.evmPage {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+}
+
+.header h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: var(--spacing-2);
+}
+
+.simulationGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-8);
+  align-items: flex-start;
+}
+
+@media (min-width: 1024px) {
+  .simulationGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ═══════ Balloting Unit ═══════ */
+.ballotingUnit {
+  background: #f1f5f9;
+  border: 12px solid #cbd5e1;
+  border-radius: var(--border-radius);
+  padding: var(--spacing-4);
+  box-shadow: inset 0 2px 10px rgba(0,0,0,0.1), 0 10px 25px rgba(0,0,0,0.1);
+  font-family: var(--font-display);
+}
+
+.unitHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #94a3b8;
+  padding-bottom: var(--spacing-2);
+  margin-bottom: var(--spacing-4);
+}
+
+.unitHeader h3 {
+  color: #334155;
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+}
+
+.readyLight {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #64748b;
+}
+
+.light {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #cbd5e1;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.lightGreen {
+  background: #22c55e;
+  box-shadow: 0 0 10px #22c55e, inset 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.candidatesList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.candidateRow {
+  display: flex;
+  align-items: center;
+  background: white;
+  padding: var(--spacing-2) var(--spacing-4);
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+}
+
+.candidatePhoto {
+  width: 45px;
+  height: 55px;
+  overflow: hidden;
+  border: 1px solid #cbd5e1;
+  background: #f1f5f9;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.candidatePhoto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.noPhoto {
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    45deg,
+    #cbd5e1,
+    #cbd5e1 5px,
+    #f1f5f9 5px,
+    #f1f5f9 10px
+  );
+  opacity: 0.5;
+}
+
+.candidateSymbol {
+  font-size: 2rem;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.candidateDetails {
+  flex: 1;
+  padding: 0 var(--spacing-4);
+  border-left: 1px solid #e2e8f0;
+  border-right: 1px solid #e2e8f0;
+  margin: 0 var(--spacing-4);
+}
+
+.candidateName {
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: #0f172a;
+}
+
+.candidateParty {
+  font-size: 0.8rem;
+  color: #64748b;
+  font-family: var(--font-body);
+}
+
+.votingControls {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+}
+
+.redLight {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #94a3b8;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.lightRedOn {
+  background: #ef4444;
+  box-shadow: 0 0 15px #ef4444, inset 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.blueButton {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #3b82f6;
+  border: none;
+  box-shadow: inset 0 4px 6px rgba(255,255,255,0.4), inset 0 -4px 6px rgba(0,0,0,0.2), 0 4px 6px rgba(0,0,0,0.3);
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.blueButton:active {
+  transform: translateY(2px);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.blueButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+/* ═══════ VVPAT Unit ═══════ */
+.vvpatColumn {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.vvpatUnit {
+  background: #1e293b;
+  border-radius: var(--border-radius);
+  padding: var(--spacing-6);
+  color: white;
+  text-align: center;
+}
+
+.vvpatUnit h3 {
+  margin-bottom: var(--spacing-4);
+  color: #cbd5e1;
+}
+
+.vvpatWindow {
+  background: #0f172a;
+  border: 8px solid #334155;
+  border-radius: 8px;
+  padding: var(--spacing-2);
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.windowLabel {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: #64748b;
+  margin-bottom: var(--spacing-4);
+}
+
+.slipContainer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+}
+
+.slip {
+  background: #f8fafc;
+  width: 60%;
+  padding: var(--spacing-4);
+  color: black;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  animation: printSlip 7s linear forwards;
+  border-bottom: 1px dashed #cbd5e1;
+}
+
+@keyframes printSlip {
+  0% { transform: translateY(-100%); opacity: 0; }
+  10% { transform: translateY(0); opacity: 1; }
+  90% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(100%); opacity: 0; }
+}
+
+.slipContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.slipSymbol {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slipName {
+  font-weight: 800;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+}
+
+.boxLabel {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: #ef4444;
+  margin-top: auto;
+}
+
+.statusCard {
+  padding: var(--spacing-4);
+  border-radius: var(--border-radius);
+}
+
+.statusIdle {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+  color: var(--text-secondary);
+}
+
+.statusWarning {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+  color: var(--accent-amber);
+}
+
+.statusSuccess {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+  color: var(--accent-emerald);
+}
+
+.muteIcon {
+  opacity: 0.5;
+}
+
+.pulseIcon {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.infoRow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-6);
+  margin-top: var(--spacing-6);
+}
+
+.infoCard {
+  padding: var(--spacing-6);
+  border-radius: var(--border-radius);
+}
+
+.infoIcon {
+  color: var(--accent-primary);
+  margin-bottom: var(--spacing-3);
+}
+
+.infoCard h4 {
+  margin-bottom: var(--spacing-2);
+  color: var(--accent-primary);
+}
+
+.infoCard p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
