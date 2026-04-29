@@ -27,7 +27,7 @@ const jetbrainsMono = JetBrains_Mono({
 const GA_ID = "G-HDW0PFQ25D";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://elected.vercel.app"),
+  metadataBase: new URL("https://elected-117353888839.us-central1.run.app"),
   title: {
     default: "ElectED | Election Process Education Assistant",
     template: "%s | ElectED",
@@ -45,11 +45,13 @@ export const metadata: Metadata = {
     description: "AI-powered election education for India's 960M+ voters.",
     type: "website",
     locale: "en_IN",
+    images: [{ url: "/icon-512.png", width: 512, height: 512, alt: "ElectED Logo" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "ElectED | Election Education",
     description: "Your guide to India's democratic process.",
+    images: ["/icon-512.png"],
   },
   robots: {
     index: true,
