@@ -11,17 +11,8 @@ export default function GuidePage() {
   const currentStep = guideSteps[currentStepIdx];
   const progress = ((currentStepIdx + 1) / guideSteps.length) * 100;
 
-  const nextStep = () => {
-    if (currentStepIdx < guideSteps.length - 1) {
-      setCurrentStepIdx(currentStepIdx + 1);
-    }
-  };
-
-  const prevStep = () => {
-    if (currentStepIdx > 0) {
-      setCurrentStepIdx(currentStepIdx - 1);
-    }
-  };
+  const nextStep = () => setCurrentStepIdx(Math.min(currentStepIdx + 1, guideSteps.length - 1));
+  const prevStep = () => setCurrentStepIdx(Math.max(currentStepIdx - 1, 0));
 
   return (
     <div className={styles.wrapper}>
@@ -85,6 +76,7 @@ export default function GuidePage() {
             <div 
               key={i} 
               className={`${styles.dot} ${i === currentStepIdx ? styles.activeDot : ''} ${i < currentStepIdx ? styles.completedDot : ''}`}
+              aria-label={`Step ${i + 1}`}
             />
           ))}
         </div>

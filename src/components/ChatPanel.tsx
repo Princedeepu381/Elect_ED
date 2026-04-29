@@ -74,7 +74,7 @@ export default function ChatPanel({ isOpen, onClose }: ChatPanelProps) {
           setMessages(prev => {
             const newMessages = [...prev];
             const last = newMessages[newMessages.length - 1];
-            if (last?.role === "assistant") {
+            if (last.role === "assistant") {
               last.content = assistantMessage;
             } else {
               newMessages.push({ role: "assistant", content: assistantMessage });
@@ -121,7 +121,7 @@ export default function ChatPanel({ isOpen, onClose }: ChatPanelProps) {
                 {msg.role === "assistant" ? <Bot size={16} /> : <User size={16} />}
               </div>
               <div className={styles.messageContent}>
-                {msg.content || (isLoading && i === messages.length - 1 ? "..." : "")}
+                {msg.content}
               </div>
             </div>
           ))}

@@ -28,10 +28,18 @@ describe("Guide Page", () => {
 
   test("PREVIOUS button should be disabled on first step (line 15-21 branch)", () => {
     render(<GuidePage />);
-    // prevStep is called but currentStepIdx === 0 so nothing happens
     const prevBtn = screen.getByText(/PREVIOUS/i).closest("button");
     expect(prevBtn).toBeDisabled();
+    
+    // Remove disabled to test the bounds check in prevStep
+    if (prevBtn) {
+      prevBtn.removeAttribute("disabled");
+      fireEvent.click(prevBtn);
+      expect(screen.getAllByText(/PHASE 1 OF/i).length).toBeGreaterThan(0);
+    }
   });
+
+
 
   test("should show EXPLORE THE MAP button on the last step (line 92 branch)", () => {
     render(<GuidePage />);

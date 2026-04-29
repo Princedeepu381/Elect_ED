@@ -7,7 +7,11 @@ jest.mock("next/navigation", () => ({
 }));
 
 // Mock dynamic import of InteractiveMap
-jest.mock("next/dynamic", () => () => {
+jest.mock("next/dynamic", () => (loader: () => Promise<unknown>, options: { loading?: () => unknown }) => {
+  if (loader) loader(); // Trigger the loader function for coverage
+  if (options && options.loading) {
+    options.loading();
+  }
   const MockMap = () => <div data-testid="mock-map">Interactive Map Mock</div>;
   MockMap.displayName = "MockMap";
   return MockMap;

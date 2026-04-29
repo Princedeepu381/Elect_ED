@@ -79,13 +79,13 @@ describe("ChatBot Component", () => {
     fireEvent.change(input, { target: { value: "Hello" } });
     fireEvent.click(screen.getByRole("button", { name: /Send message/i }));
 
-    await screen.findByText(/I'm having trouble connecting right now/i);
+    await screen.findByText(/I encountered an error: Network error. Please ensure your API key is valid and try again./i);
   });
 
-  test("should handle API response not ok error", async () => {
+  test("should handle API response not ok error with missing details", async () => {
     global.fetch = jest.fn().mockResolvedValue({
       ok: false,
-      json: async () => ({ details: "Upstream service error" }),
+      json: async () => ({}),
     } as unknown as Response);
 
     render(<ChatBot />);
@@ -94,7 +94,22 @@ describe("ChatBot Component", () => {
     fireEvent.change(input, { target: { value: "Hello" } });
     fireEvent.click(screen.getByRole("button", { name: /Send message/i }));
 
-    await screen.findByText(/I'm having trouble connecting right now/i);
+    await screen.findByText(/I encountered an error: Upstream service error. Please ensure your API key is valid and try again./i);
+  });
+
+  test("should handle missing reader", async () => {
+    global.fetch = jest.fn().mockResolvedValue({
+      ok: true,
+      body: null,
+    } as unknown as Response);
+
+    render(<ChatBot />);
+    fireEvent.click(screen.getByRole("button", { name: /Open ElectED AI Assistant/i }));
+    const input = screen.getByPlaceholderText(/ASK ABOUT LAWS, DATES, OR PROCESSES/i);
+    fireEvent.change(input, { target: { value: "Hello" } });
+    fireEvent.click(screen.getByRole("button", { name: /Send message/i }));
+
+    await screen.findByText(/I encountered an error: No reader available. Please ensure your API key is valid and try again./i);
   });
 
   test("should not send empty message", () => {

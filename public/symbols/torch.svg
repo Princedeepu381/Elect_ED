@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <rect width="200" height="200" fill="white"/>
+  <!-- Torch handle -->
+  <rect x="88" y="120" width="24" height="70" rx="6" fill="#8B4513"/>
+  <rect x="92" y="118" width="16" height="10" rx="2" fill="#6B3410"/>
+  <!-- Grip ridges -->
+  <rect x="88" y="130" width="24" height="4" rx="2" fill="#6B3410"/>
+  <rect x="88" y="143" width="24" height="4" rx="2" fill="#6B3410"/>
+  <rect x="88" y="156" width="24" height="4" rx="2" fill="#6B3410"/>
+  <!-- Torch cup -->
+  <path d="M75 95 Q80 115 88 120 L112 120 Q120 115 125 95 Z" fill="#cc6600"/>
+  <!-- Flame outer glow -->
+  <ellipse cx="100" cy="75" rx="30" ry="40" fill="#ff6600" opacity="0.4"/>
+  <!-- Flame layers -->
+  <path d="M100 20 Q85 35 80 55 Q75 72 85 85 Q90 92 100 95 Q110 92 115 85 Q125 72 120 55 Q115 35 100 20 Z" fill="#ff4500"/>
+  <path d="M100 30 Q90 45 87 62 Q84 76 92 86 Q96 91 100 92 Q104 91 108 86 Q116 76 113 62 Q110 45 100 30 Z" fill="#ff8c00"/>
+  <path d="M100 45 Q95 55 94 65 Q92 74 97 82 Q98 85 100 86 Q102 85 103 82 Q108 74 106 65 Q105 55 100 45 Z" fill="#ffcc00"/>
+  <!-- Flame highlight -->
+  <path d="M100 55 Q98 65 99 72 Q99 78 100 80 Q101 78 101 72 Q102 65 100 55 Z" fill="white" opacity="0.5"/>
+  <!-- Spark dots -->
+  <circle cx="75" cy="60" r="3" fill="#ffcc00" opacity="0.8"/>
+  <circle cx="128" cy="50" r="2" fill="#ff8c00" opacity="0.7"/>
+  <circle cx="70" cy="45" r="2" fill="#ff6600" opacity="0.6"/>
+  <circle cx="130" cy="70" r="3" fill="#ffcc00" opacity="0.7"/>
+</svg>

@@ -68,8 +68,9 @@ export default function ChatBot() {
           return newMessages;
         });
       }
-    } catch {
-      setMessages(prev => [...prev, { role: "assistant", content: "I'm having trouble connecting right now. Please try again later." }]);
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : "Connection failed";
+      setMessages(prev => [...prev, { role: "assistant", content: `I encountered an error: ${errorMessage}. Please ensure your API key is valid and try again.` }]);
       setIsLoading(false);
     }
   };
@@ -106,7 +107,7 @@ export default function ChatBot() {
                 <div className={styles.botStatus}>ONLINE</div>
               </div>
             </div>
-            <button className={styles.closeBtn} onClick={() => setIsOpen(false)}>
+            <button className={styles.closeBtn} onClick={() => setIsOpen(false)} aria-label="Minimize chat">
               <Minimize2 size={18} />
             </button>
           </header>

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <rect width="200" height="200" fill="white"/>
+  <!-- Ground -->
+  <rect x="10" y="150" width="180" height="8" rx="4" fill="#4a7c2f"/>
+  <!-- Plough handle -->
+  <path d="M30 150 L60 110 L80 120" stroke="#5c3a1e" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Plough blade -->
+  <path d="M60 130 Q90 120 120 150 Q100 155 80 145 Z" fill="#5c3a1e"/>
+  <!-- Plough wheel -->
+  <circle cx="115" cy="148" r="12" fill="none" stroke="#5c3a1e" stroke-width="4"/>
+  <circle cx="115" cy="148" r="4" fill="#5c3a1e"/>
+  <!-- Farmer body -->
+  <path d="M75 60 Q80 55 90 55 Q100 55 105 60 L110 100 L95 105 L90 115 L85 105 L70 100 Z" fill="#2d6a2d"/>
+  <!-- Farmer head -->
+  <circle cx="90" cy="45" r="18" fill="#c8956c"/>
+  <!-- Farmer hat -->
+  <ellipse cx="90" cy="30" rx="25" ry="6" fill="#8B6914"/>
+  <rect x="78" y="20" width="24" height="14" rx="3" fill="#8B6914"/>
+  <!-- Farmer arm holding plough -->
+  <path d="M70 80 Q50 95 35 120" stroke="#2d6a2d" stroke-width="8" fill="none" stroke-linecap="round"/>
+  <!-- Farmer legs -->
+  <path d="M80 105 L75 150" stroke="#1a4a1a" stroke-width="6" stroke-linecap="round"/>
+  <path d="M95 105 L100 150" stroke="#1a4a1a" stroke-width="6" stroke-linecap="round"/>
+  <!-- Soil furrows -->
+  <path d="M80 158 Q110 153 140 158" stroke="#7a5c3a" stroke-width="3" fill="none"/>
+  <path d="M90 165 Q115 160 145 165" stroke="#7a5c3a" stroke-width="2" fill="none"/>
+</svg>

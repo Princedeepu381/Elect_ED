@@ -6,17 +6,25 @@ const mockStates = [
 ];
 
 describe("InteractiveMap Component", () => {
-  test("returns null if no state is selected", () => {
-    const { container } = render(<InteractiveMap states={mockStates} selectedStateId="unknown" />);
-    expect(container.firstChild).toBeNull();
+  test("renders placeholder if no state is selected", () => {
+    render(<InteractiveMap states={mockStates} selectedStateId="unknown" />);
+    expect(screen.getByText(/SELECT A STATE TO VIEW GOOGLE MAP/i)).toBeInTheDocument();
   });
 
   test("renders map embed for selected state", () => {
     const { container } = render(<InteractiveMap states={mockStates} selectedStateId="ka" />);
-    expect(screen.getByText(/GOOGLE CLOUD UPLINK: KARNATAKA/i)).toBeInTheDocument();
+    expect(screen.getByText(/GOOGLE MAPS \| KARNATAKA/i)).toBeInTheDocument();
     
     const iframe = container.querySelector('iframe');
     expect(iframe).toBeInTheDocument();
     expect(iframe).toHaveAttribute('src', expect.stringContaining('Karnataka'));
+  });
+
+  test("renders map embed with API key if provided", () => {
+    process.env.NEXT_PUBLIC_MAPS_API_KEY = "test-api-key";
+    const { container } = render(<InteractiveMap states={mockStates} selectedStateId="ka" />);
+    const iframe = container.querySelector('iframe');
+    expect(iframe).toHaveAttribute('src', expect.stringContaining('test-api-key'));
+    delete process.env.NEXT_PUBLIC_MAPS_API_KEY;
   });
 });

@@ -1,7 +1,5 @@
 "use client";
 
-
-
 interface StateData {
   id: string;
   name: string;
@@ -17,55 +15,41 @@ interface InteractiveMapProps {
 }
 
 /**
- * GOOGLE MAPS CLOUD EMBED SERVICE
- * This uses the official Google Maps Embed API which is a part of the Google Cloud ecosystem.
- * It provides a professional, popup-free experience for the hackathon submission.
+ * OFFICIAL GOOGLE MAPS EMBED SERVICE
+ * Using Google Cloud Maps Embed API for the hackathon submission.
  */
 export default function InteractiveMap({ states, selectedStateId }: InteractiveMapProps) {
   const selectedState = states.find((s) => s.id === selectedStateId);
+  const apiKey = process.env.NEXT_PUBLIC_MAPS_API_KEY;
 
-  if (!selectedState) return null;
+  if (!selectedState) {
+    return (
+      <div style={{ width: "100%", height: "400px", display: "flex", alignItems: "center", justifyContent: "center", backgroundColor: "#111", color: "#666" }}>
+        SELECT A STATE TO VIEW GOOGLE MAP
+      </div>
+    );
+  }
 
-  // Robust Google Maps Embed URL
-  const embedUrl = `https://www.google.com/maps?q=${encodeURIComponent(selectedState.name)}%20India&output=embed`;
+  // Official Google Maps Embed API URL (Place Mode)
+  // This is the most stable and professional way to embed Google Maps.
+  const embedUrl = apiKey 
+    ? `https://www.google.com/maps/embed/v1/place?key=${apiKey}&q=${encodeURIComponent(selectedState.name)}%20India`
+    : `https://www.google.com/maps?q=${encodeURIComponent(selectedState.name)}%20India&output=embed`;
 
   return (
-    <div style={{ width: "100%", height: "100%", borderRadius: "12px", overflow: "hidden", position: "relative", backgroundColor: "#111" }}>
-      <div 
-        style={{
-          position: "absolute",
-          top: 0, left: 0, right: 0,
-          padding: "1rem",
-          background: "linear-gradient(to bottom, rgba(0,0,0,0.8), transparent)",
-          color: "white",
-          zIndex: 10,
-          pointerEvents: "none",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center"
-        }}
-      >
-        <span style={{ fontWeight: 800, letterSpacing: "0.1em", fontSize: "0.85rem" }}>
-          GOOGLE CLOUD UPLINK: {selectedState.name.toUpperCase()}
-        </span>
-        <span style={{ background: "#f97316", padding: "0.2rem 0.5rem", borderRadius: "4px", fontSize: "0.7rem", fontWeight: 900 }}>
-          SECURE
-        </span>
-      </div>
-      
-      {/* Brutalist CSS Filters to make the Google Map match the dark theme */}
-      <iframe 
+    <div style={{ width: "100%", height: "400px", borderRadius: "12px", overflow: "hidden", position: "relative", backgroundColor: "#111", border: "1px solid #334155" }}>
+      <iframe
+        width="100%"
+        height="100%"
+        style={{ border: 0 }}
+        loading="lazy"
+        allowFullScreen
+        referrerPolicy="no-referrer-when-downgrade"
         src={embedUrl}
-        width="100%" 
-        height="100%" 
-        style={{ 
-          border: 0,
-          filter: "grayscale(1) invert(0.9) contrast(1.2)", 
-          transition: "all 0.3s ease" 
-        }} 
-        allowFullScreen={true} 
-        loading="lazy" 
-      />
+      ></iframe>
+      <div style={{ position: "absolute", bottom: "10px", right: "10px", padding: "4px 8px", background: "rgba(0,0,0,0.6)", color: "white", fontSize: "10px", borderRadius: "4px", pointerEvents: "none" }}>
+        GOOGLE MAPS | {selectedState.name.toUpperCase()}
+      </div>
     </div>
   );
 }

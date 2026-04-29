@@ -79,9 +79,20 @@
   display: flex;
   align-items: center;
   background: white;
-  padding: var(--spacing-2) var(--spacing-4);
+  padding: var(--spacing-3) var(--spacing-4);
   border: 1px solid #e2e8f0;
   border-radius: 4px;
+  min-height: 80px;
+}
+
+.candidateSlNo {
+  width: 25px;
+  font-family: var(--font-mono);
+  font-weight: bold;
+  color: #64748b;
+  font-size: 0.9rem;
+  text-align: center;
+  margin-right: var(--spacing-2);
 }
 
 .candidatePhoto {
@@ -128,6 +139,10 @@
   border-left: 1px solid #e2e8f0;
   border-right: 1px solid #e2e8f0;
   margin: 0 var(--spacing-4);
+  min-width: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .candidateName {
@@ -231,7 +246,7 @@
 
 .slip {
   background: #f8fafc;
-  width: 60%;
+  width: 80%;
   padding: var(--spacing-4);
   color: black;
   box-shadow: 0 4px 10px rgba(0,0,0,0.5);

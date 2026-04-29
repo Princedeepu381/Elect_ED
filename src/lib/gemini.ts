@@ -3,9 +3,9 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 const apiKey = process.env.GEMINI_API_KEY || "";
 const genAI = new GoogleGenerativeAI(apiKey);
 
-// Using the explicit 'latest' suffix which resolves naming conflicts in some regions
+// Using gemini-pro as a more stable fallback for broad compatibility
 export const model = genAI.getGenerativeModel({
-  model: "gemini-1.5-flash-latest",
+  model: "gemini-pro",
 });
 
 export const SYSTEM_PROMPT = `

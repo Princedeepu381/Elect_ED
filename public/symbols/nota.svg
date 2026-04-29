@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <rect width="200" height="200" fill="white"/>
+  <!-- Outer circle -->
+  <circle cx="100" cy="95" r="65" fill="none" stroke="#555" stroke-width="8"/>
+  <!-- X mark inside -->
+  <line x1="60" y1="55" x2="140" y2="135" stroke="#cc2200" stroke-width="10" stroke-linecap="round"/>
+  <line x1="140" y1="55" x2="60" y2="135" stroke="#cc2200" stroke-width="10" stroke-linecap="round"/>
+  <!-- NOTA text -->
+  <text x="100" y="182" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#333">NOTA</text>
+  <text x="100" y="198" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#666">None Of The Above</text>
+</svg>

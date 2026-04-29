@@ -67,12 +67,35 @@ describe("Candidates Page", () => {
     expect(screen.getByText(/Indian National Congress/i)).toBeInTheDocument();
   });
 
-  test("renders loading state when loading is true (lines 75-92 branch)", () => {
-    // The loading state is initialized to false and never changes in the current code.
-    // This test verifies the candidate grid renders (non-loading path)
+  test("handles zero wealth candidate (lines 91-92 branches)", () => {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const reactMock = require("react");
+    const mockCandidate = {
+      id: 'zero', name: 'Zero Wealth', party: 'None', education: 'None', assetsStr: '₹ 0', liabilitiesStr: '₹ 0',
+      assetsRaw: 0, liabilitiesRaw: 0, cases: 0, affidavitUrl: '#',
+      color: '#000',
+      promises: []
+    };
+    
+    // We only want to mock the first useState call (which is the candidates list)
+    // The rest (like those in Next.js Image) should use the real useState.
+    const originalUseState = reactMock.useState;
+    let callCount = 0;
+    jest.spyOn(reactMock, "useState").mockImplementation((init: unknown) => {
+      callCount++;
+      if (callCount === 1) return [[mockCandidate], jest.fn()];
+      return originalUseState(init);
+    });
+
     render(<CandidatesPage />);
-    // 9 candidates should be rendered
-    const affidavitLinks = screen.getAllByText(/View ECI Affidavit/i);
-    expect(affidavitLinks.length).toBe(9);
+    expect(screen.getByText(/Zero Wealth/i)).toBeInTheDocument();
+    
+    // Percentages should be 0 and bars should have 0% width
+    const assetBar = document.querySelector("[class*='assetBar']") as HTMLElement;
+    const liabilityBar = document.querySelector("[class*='liabilityBar']") as HTMLElement;
+    expect(assetBar.style.width).toBe("0%");
+    expect(liabilityBar.style.width).toBe("0%");
+
+    jest.restoreAllMocks();
   });
 });

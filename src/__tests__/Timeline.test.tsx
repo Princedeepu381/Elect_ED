@@ -1,5 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import TimelinePage from "../app/timeline/page";
+import timelineEvents from "@/data/timeline-events.json";
 
 describe("Timeline Page", () => {
   test("should render the timeline header", () => {
@@ -61,6 +62,23 @@ describe("Timeline Page", () => {
     expect(screen.getAllByText("PRE-ELECTION").length).toBeGreaterThan(0);
     expect(screen.getAllByText("ELECTION DAY").length).toBeGreaterThan(0);
     expect(screen.getAllByText("POST-ELECTION").length).toBeGreaterThan(0);
+  });
+  test("renders events with missing or invalid icons and phases (lines 45-46)", () => {
+    // Add a fake event to the array to trigger the fallback branches
+    (timelineEvents as { id: string; phase: string; icon: string; period: string; title: string; description: string; }[]).push({
+      id: "fake-event",
+      phase: "unknown-phase",
+      icon: "NonExistentIconXYZ",
+      period: "2024",
+      title: "Fake Event",
+      description: "Mock Desc"
+    });
+    
+    render(<TimelinePage />);
+    expect(screen.getByText("Fake Event")).toBeInTheDocument();
+    
+    // Cleanup so it doesn't affect other runs
+    (timelineEvents as unknown[]).pop();
   });
 
   test("should render the CHRONOLOGY badge", () => {

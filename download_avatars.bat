@@ -1,0 +1,10 @@
+@echo off
+curl -L -o public\candidates\modi.svg "https://api.dicebear.com/9.x/avataaars/svg?seed=Modi&beardProbability=100&glassesProbability=100"
+curl -L -o public\candidates\rahul.svg "https://api.dicebear.com/9.x/avataaars/svg?seed=Rahul"
+curl -L -o public\candidates\mamata.svg "https://api.dicebear.com/9.x/avataaars/svg?seed=Mamata"
+curl -L -o public\candidates\kejriwal.svg "https://api.dicebear.com/9.x/avataaars/svg?seed=Kejriwal&glassesProbability=100"
+curl -L -o public\candidates\akhilesh.svg "https://api.dicebear.com/9.x/avataaars/svg?seed=Akhilesh"
+curl -L -o public\candidates\mayawati.svg "https://api.dicebear.com/9.x/avataaars/svg?seed=Mayawati"
+curl -L -o public\candidates\stalin.svg "https://api.dicebear.com/9.x/avataaars/svg?seed=Stalin"
+curl -L -o public\candidates\nikhil.svg "https://api.dicebear.com/9.x/avataaars/svg?seed=Nikhil"
+curl -L -o public\candidates\uddhav.svg "https://api.dicebear.com/9.x/avataaars/svg?seed=Uddhav"

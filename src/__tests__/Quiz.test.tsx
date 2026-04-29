@@ -153,4 +153,76 @@ describe("Quiz Page", () => {
     // Regardless of score path, the component renders correctly
     expect(screen.getAllByRole("button").length).toBeGreaterThan(0);
   });
+
+  test("high score result message branch (line 108 - score >= 90%)", () => {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const reactMock = require("react");
+    jest.spyOn(reactMock, "useState")
+      .mockImplementationOnce(() => [{ id: "t1", title: "Test", description: "", questions: [{ id: "1" }, { id: "2" }] }, jest.fn()]) // selectedTopic
+      .mockImplementationOnce(() => [0, jest.fn()]) // currentIdx
+      .mockImplementationOnce(() => [2, jest.fn()]) // score = 2 (100%)
+      .mockImplementationOnce(() => [true, jest.fn()]) // showResult = true
+      .mockImplementationOnce(() => [null, jest.fn()]) // selectedOption
+      .mockImplementationOnce(() => [false, jest.fn()]); // isAnswered
+      
+    const { container } = render(<QuizPage />);
+    expect(screen.getByText(/QUIZ COMPLETED/i)).toBeInTheDocument();
+    const confetti = container.querySelector("[class*='confetti']");
+    expect(confetti).toBeTruthy();
+    jest.restoreAllMocks();
+  });
+
+  test("low score novice voter branch (score < 60%)", () => {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const reactMock = require("react");
+    jest.spyOn(reactMock, "useState")
+      .mockImplementationOnce(() => [{ id: "t1", title: "Test", questions: Array(10).fill({correctIndex: 0}) }, jest.fn()]) // selectedTopic
+      .mockImplementationOnce(() => [0, jest.fn()]) // currentIdx
+      .mockImplementationOnce(() => [0, jest.fn()]) // score = 0
+      .mockImplementationOnce(() => [true, jest.fn()]); // showResult = true
+      
+    render(<QuizPage />);
+    expect(screen.getByText(/NOVICE VOTER/i)).toBeInTheDocument();
+    expect(screen.getByText(/Keep learning!/i)).toBeInTheDocument();
+    
+    jest.restoreAllMocks();
+  });
+
+  test("topic null guard branches", () => {
+    render(<QuizPage />);
+    expect(screen.getByText(/CHOOSE YOUR/i)).toBeInTheDocument();
+  });
+
+  test("informed citizen grade branch (score 70%)", () => {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const reactMock = require("react");
+    jest.spyOn(reactMock, "useState")
+      .mockImplementationOnce(() => [{ id: "t1", title: "Test", questions: Array(10).fill({correctIndex: 0}) }, jest.fn()]) // selectedTopic
+      .mockImplementationOnce(() => [0, jest.fn()]) // currentIdx
+      .mockImplementationOnce(() => [7, jest.fn()]) // score = 7 (70%)
+      .mockImplementationOnce(() => [true, jest.fn()]); // showResult = true
+      
+    render(<QuizPage />);
+    expect(screen.getByText(/INFORMED CITIZEN/i)).toBeInTheDocument();
+    expect(screen.getByText(/Great job!/i)).toBeInTheDocument();
+    
+    jest.restoreAllMocks();
+  });
+
+  test("prevents answering twice or without topic", () => {
+    render(<QuizPage />);
+    // Select first topic
+    fireEvent.click(screen.getAllByRole("button")[0]);
+    // Answer first question
+    const options = screen.getAllByRole("button");
+    const optionBtn = options.find(b => b.className.includes("optionBtn") && b.textContent?.includes("A"));
+    if (optionBtn) {
+      fireEvent.click(optionBtn);
+      // Try clicking another option
+      const optionBtn2 = options.find(b => b.textContent?.startsWith("B"));
+      if (optionBtn2) fireEvent.click(optionBtn2);
+      // Should still show original selection (checking if it isAnswered is true)
+      expect(optionBtn).toBeDisabled();
+    }
+  });
 });

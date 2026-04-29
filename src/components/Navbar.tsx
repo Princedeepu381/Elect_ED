@@ -60,7 +60,7 @@ export default function Navbar() {
         <button
           className={styles.hamburger}
           onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={mobileOpen}
         >
           {mobileOpen ? <X size={22} /> : <Menu size={22} />}
@@ -73,7 +73,7 @@ export default function Navbar() {
           <div className={styles.mobileDrawer} onClick={(e) => e.stopPropagation()}>
             <div className={styles.drawerHeader}>
               <span className={styles.drawerTitle}>NAVIGATION</span>
-              <button className={styles.drawerClose} onClick={() => setMobileOpen(false)}>
+              <button className={styles.drawerClose} onClick={() => setMobileOpen(false)} aria-label="Close navigation drawer">
                 <X size={20} />
               </button>
             </div>

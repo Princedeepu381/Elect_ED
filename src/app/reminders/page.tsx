@@ -184,11 +184,11 @@ export default function RemindersPage() {
                         </div>
                       </div>
                       <div className={styles.actionBtns}>
-                        <button className={styles.calBtn} onClick={() => generateICS(r)} title="Add to Calendar">
+                        <button className={styles.calBtn} onClick={() => generateICS(r)} title="Add to Calendar" aria-label="Download calendar event">
                           <Download size={16} />
                           .ICS
                         </button>
-                        <button className={styles.deleteBtn} onClick={() => deleteReminder(r.id)} title="Delete">
+                        <button className={styles.deleteBtn} onClick={() => deleteReminder(r.id)} title="Delete" aria-label="Delete reminder">
                           <Trash2 size={16} />
                         </button>
                       </div>

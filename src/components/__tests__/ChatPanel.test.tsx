@@ -163,4 +163,60 @@ describe("ChatPanel Component", () => {
     consoleSpy.mockRestore();
     fetchSpy.mockRestore();
   });
+  test("should handle missing details in error response (line 51)", async () => {
+    global.fetch = jest.fn().mockResolvedValue({
+      ok: false,
+      json: async () => ({}),
+    } as unknown as Response);
+
+    render(<ChatPanel isOpen={true} onClose={mockOnClose} />);
+    const input = screen.getByPlaceholderText(/Ask about registration/i);
+    fireEvent.change(input, { target: { value: "Hello" } });
+    fireEvent.click(screen.getByRole("button", { name: /Send message/i }));
+
+    await screen.findByText(/Sorry, I encountered an error/i);
+  });
+
+  test("should handle multiple stream chunks to cover role check (line 77) and empty content rendering (line 124)", async () => {
+    const mockStream = {
+      getReader: () => ({
+        read: jest.fn()
+          .mockResolvedValueOnce({ done: false, value: new TextEncoder().encode("") }) // Empty chunk tests line 124
+          .mockResolvedValueOnce({ done: false, value: new TextEncoder().encode("Chunk 1 ") }) // First chunk hits else branch
+          .mockResolvedValueOnce({ done: false, value: new TextEncoder().encode("Chunk 2") }) // Second chunk hits if branch
+          .mockResolvedValueOnce({ done: true }),
+      }),
+    };
+    
+    global.fetch = jest.fn().mockResolvedValue({
+      ok: true,
+      body: mockStream,
+    } as unknown as Response);
+
+    render(<ChatPanel isOpen={true} onClose={mockOnClose} />);
+    
+    const input = screen.getByPlaceholderText(/Ask about registration/i);
+    fireEvent.change(input, { target: { value: "Trigger" } });
+    fireEvent.click(screen.getByRole("button", { name: /Send message/i }));
+
+    await screen.findByText(/Chunk 1 Chunk 2/i);
+  });
+
+  test("handles JSON parsing error in error response (line 50 catch branch)", async () => {
+    const fetchSpy = jest.spyOn(global, 'fetch').mockResolvedValue({
+      ok: false,
+      json: () => Promise.reject(new Error("JSON parse error")),
+    } as unknown as Response);
+
+    render(<ChatPanel isOpen={true} onClose={mockOnClose} />);
+    const input = screen.getByPlaceholderText(/Ask about registration/i);
+    fireEvent.change(input, { target: { value: "Error" } });
+    fireEvent.click(screen.getByRole("button", { name: /Send message/i }));
+
+    await waitFor(() => {
+      expect(screen.getByText(/Sorry, I encountered an error/i)).toBeInTheDocument();
+    });
+
+    fetchSpy.mockRestore();
+  });
 });

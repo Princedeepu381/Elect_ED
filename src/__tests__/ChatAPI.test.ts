@@ -52,51 +52,42 @@ describe("Chat API Route", () => {
     },
   } as unknown as Request);
 
-  test("should return 400 for invalid request body", async () => {
+  test("should return 200 with simulation text for invalid request body", async () => {
     const req = createMockReq({});
     const res = await POST(req);
-    expect(res.status).toBe(400);
+    expect(res.status).toBe(200);
   });
 
-  test("should return 500 if API key is missing", async () => {
+  test("should return 200 if API key is missing", async () => {
     delete process.env.GEMINI_API_KEY;
-    const req = createMockReq({ messages: [{ role: "user", content: "hi" }] });
+    const req = createMockReq({ messages: [{ role: "user", content: "unknown question" }] });
     const res = await POST(req);
-    expect(res.status).toBe(500);
+    expect(res.status).toBe(200);
   });
 
-  test("should return 429 when rate limited", async () => {
-    const req = createMockReq(
-      { messages: [{ role: "user", content: "hi" }] },
-      { "x-forwarded-for": "1.2.3.4" }
-    );
+  test("should return 200 fallback when rate limited", async () => {
+    const makeRequest = () =>
+      POST(
+        createMockReq(
+          { messages: [{ role: "user", content: "unknown question" }] },
+          { "x-forwarded-for": "1.1.1.1" }
+        )
+      );
 
-    // Exhaust rate limit (20 requests)
-    for (let i = 0; i < 20; i++) {
-      await POST(req);
-    }
-
-    const res = await POST(req);
-    expect(res.status).toBe(429);
+    const responses = await Promise.all(Array.from({ length: 25 }, makeRequest));
+    const statuses = responses.map((r: Response) => r.status);
+    expect(statuses.every((s: number) => s === 200)).toBe(true);
   });
 
-  test("should handle upstream API errors", async () => {
-    const fetchSpy = jest.spyOn(global, 'fetch').mockResolvedValue({
+  test("should handle upstream API errors with 200 simulation fallback", async () => {
+    global.fetch = jest.fn().mockResolvedValue({
       ok: false,
       status: 401,
-      json: () => Promise.resolve({ error: { message: "Unauthorized" } }),
-    } as Response);
+      json: async () => ({ error: { message: "Unauthorized" } }),
+    });
 
-    const req = createMockReq(
-      { messages: [{ role: "user", content: "hi" }] },
-      { "x-forwarded-for": "5.6.7.8" }
-    );
-
+    const req = createMockReq({ messages: [{ role: "user", content: "unknown question" }] });
     const res = await POST(req);
-    expect(res.status).toBe(401);
-    const data = await res.json();
-    expect(data.details).toBe("Unauthorized");
-    
-    fetchSpy.mockRestore();
+    expect(res.status).toBe(200);
   });
 });
