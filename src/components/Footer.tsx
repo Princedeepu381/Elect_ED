@@ -10,7 +10,6 @@ export default function Footer() {
           <Link href="/" className={styles.logo}>
             Elect<span>Ed</span>
           </Link>
-          <div className={styles.authoritativeBadge}>AUTHORITATIVE ELECTION DATA</div>
           <p className={styles.description}>
             Empowering citizens to innovate, protect, and participate in the world&apos;s largest democracy.
           </p>

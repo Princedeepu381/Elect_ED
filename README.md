@@ -7,7 +7,7 @@
 [![Accessibility](https://img.shields.io/badge/A11y-100%25-blue)](https://elected-117353888839.us-central1.run.app)
 [![Testing](https://img.shields.io/badge/Tests-229/229_Passing-brightgreen)](https://github.com/Princedeepu381/Elect_ED)
 
-**ElectED** is a high-performance, national-scale civic education platform designed to empower India's **960 million+ voters**. Built for the Google AI Hackathon, it combines a brutalist "Civic Tech" aesthetic with **Google Gemini 1.5 Flash** to provide authoritative election insights across every State and Union Territory in India.
+**ElectED** is a high-performance, national-scale civic education platform designed to empower India's **960 million+ voters**. Built for the Google AI Hackathon, it combines a brutalist "Civic Tech" aesthetic with **Google Gemini 1.5 Flash** to provide election insights across every State and Union Territory in India.
 
 ---
 
