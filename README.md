@@ -47,7 +47,7 @@ A gamified learning experience with quizzes that grade users from "Novice" to "E
 
 ## 🚀 Getting Started
 
-### Live Demo: [ElectED Platform](https://elected-117353888839.us-central1.run.app)
+### Live Demo: [ElectED Platform (https://elect-ed.vercel.app/)
 
 ### Local Setup
 1. **Clone the repository:**
